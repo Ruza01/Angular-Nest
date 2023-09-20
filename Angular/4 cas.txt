@@ -1,0 +1,27 @@
+ngrx/entity - on ima par stvari kako cemo da pisemo CRUD operacije nad entitetima u nasem reduceru
+
+export interface SongsState extends EntityState<Song> {
+    selectedSong: number;
+}
+
+EntityState ima niz ids i hasMapu entities i plus mu dodajemo selectedSong proprerti
+
+Postoji malo lepsi nacin za ovo :
+export interface SongsState extends EntityState<Song> {
+    selectedSong: number;
+}
+
+export const initialState: SongsState = {
+    ids: [],
+    entities: {},
+    selectedSong: 0,
+}
+
+a to je ovo:
+Pravimo adapter, da bi mogli da radimo CRUD operacije
+
+AKO NAM JE RECUDER JEDNSOTAVAN I NEMA NIKAKAV NIZ U NJEMU, NE KORISTIMO ADAPTER!!!!!!!!!!!!!
+
+od 31:00 hocu da kliknem i da ocenim pesmu (rating) (like,dislike..)
+
+AKO ZELIM DA RADIM POST ILI PUT ODGLEDAJ OD 53 MIN DO 57 

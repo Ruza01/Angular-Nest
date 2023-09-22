@@ -1,0 +1,19 @@
+#profileCard{
+    width: 600px;
+    height: 600px;
+    margin-left: 30px;
+    margin-top: 20px;
+    border: 2px solid #1f1f1f;
+    border-radius: 40px;
+    display: flex;
+}
+
+#carCard{
+    width: 600px;
+    height: 600px;
+    margin-left: 30px;
+    margin-top: 20px;
+    border: 2px solid #1f1f1f;
+    border-radius: 40px;
+    display: flex;
+}

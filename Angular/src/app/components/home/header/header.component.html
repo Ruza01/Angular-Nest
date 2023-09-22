@@ -1,0 +1,73 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<mat-toolbar class="matToolbar">
+    <div id="divZaSliku1" style="margin-left: 100px; margin-right: 280px;">
+        <img src="assets/header/360_F_575158334_WqU7qcHExao3xoegDOkIv5utkIjzezN7-removebg-preview (1).png" alt="Moja slika1" height="100px" width="200px">
+    </div>
+    <div class="wrapper">
+        <div class="button">
+            <div class="icon">
+                <a href="https://twitter.com/?lang=en" target="_blank">
+                    <i class="fa-brands fa-square-twitter"></i>
+                </a>
+            </div>
+            <span>Twitter</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="button">
+            <div class="icon">
+                <a href="https://www.facebook.com/" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+            <span>Facebook</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="button">
+            <div class="icon">
+                <a href="https://www.instagram.com/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <span>Instagram</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="button">
+            <div class="icon">
+                <a href="https://www.youtube.com/" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+            <span>Youtube</span>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="button">
+            <div class="icon">
+                <a href="https://rs.linkedin.com/?original_referer=https%3A%2F%2Fwww.google.com%2F" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+            <span>Linkedin</span>
+        </div>
+    </div>
+    <button mat-fab extended id="homeButton" style="margin-left: 400px;">
+        <a [routerLink]="['/home']">
+        <mat-icon>home</mat-icon>
+        Home
+        </a>
+    </button>
+    <button mat-fab id="profileButton">
+        <a [routerLink]="['/profile']">
+        <mat-icon>View Profile</mat-icon>
+        Profile
+        </a>
+    </button>
+</mat-toolbar>

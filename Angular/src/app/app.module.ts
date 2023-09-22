@@ -13,18 +13,34 @@ import { AppState } from './app.state';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import { SongsEffects } from './store/song.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { HeaderComponent } from './components/home/header/header.component';
+import { FooterComponent } from './components/home/footer/footer.component';
+import { BodyComponent } from './components/home/body/body.component';
+import { HomeComponent } from './components/home/home.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { ProfileModule } from './components/profile/profile.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaylistComponent,
     SongThumbComponent,
-    SongEditorComponent
+    SongEditorComponent,
+    HeaderComponent,
+    FooterComponent,
+    BodyComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    ProfileModule,
     StoreModule.forRoot<AppState>({songs: songsReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
@@ -39,5 +55,4 @@ import { EffectsModule } from '@ngrx/effects';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  
- }
+}

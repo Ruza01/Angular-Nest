@@ -1,5 +1,5 @@
 import { Component , OnInit } from '@angular/core';
-import { Song } from 'src/app/models/songs';
+import { Song } from 'src/app/Models/songs';
 import { SongsService } from 'src/app/services/songs.service';
 import { Observable, of} from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';

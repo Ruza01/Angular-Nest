@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Song } from '../models/songs';
+import { Song } from '../Models/songs';
 import { environment } from 'src/environments/environments';
 
 @Injectable({

@@ -1,16 +1,16 @@
 .matToolbar {
     background-color: #1f1f1f;
-    position: relative; /* Postavite relativnu poziciju za .matToolbar */
+    position: relative; 
 }
 
 #homeButton {
-    position: absolute; /* Postavite apsolutnu poziciju za "Home" dugme */
-    left: 800px; /* Pomaknite "Home" dugme */
+    position: absolute; 
+    left: 800px; 
 }
 
 #profileButton {
-    position: absolute; /* Postavite apsolutnu poziciju za "Profile" dugme */
-    left: 1300px; /* Pomaknite "Profile" dugme */
+    position: absolute; 
+    left: 1300px; 
 }
 
 .wrapper .button{

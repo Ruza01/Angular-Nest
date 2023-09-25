@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Song, SongRating } from 'src/app/models/songs';
+import { Song, SongRating } from 'src/app/Models/songs';
 import { Store } from '@ngrx/store';
 import { SongsState } from 'src/app/store/song.reducer';
 import { AppState } from 'src/app/app.state'

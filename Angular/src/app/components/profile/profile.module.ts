@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AddCarImageComponent } from "./add-car-image/add-car-image.component";
 import { AddCarModalComponent } from './add-car-modal/add-car-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { AddCarModalComponent } from './add-car-modal/add-car-modal.component';
       MatInputModule,
       NgIf,
       MatButtonModule,
+      BrowserAnimationsModule,
       
     ]
 })

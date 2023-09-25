@@ -1,5 +1,5 @@
 import { Component,EventEmitter,Input,OnInit, Output } from '@angular/core';
-import { Song } from 'src/app/models/songs';
+import { Song } from 'src/app/Models/songs';
 
 @Component({
   selector: 'app-song-thumb',

@@ -7,3 +7,14 @@
     height: 270px;
     border-radius: 40px;
 }
+
+.divProfileData{
+    height: 250;
+    max-width: 25px;
+    font-size: 17px;
+    margin-left: 35px;
+    font-style: normal;
+    color: black;
+    font-weight: 900;
+    text-shadow: 0 0 10px #1f1f1f;
+}

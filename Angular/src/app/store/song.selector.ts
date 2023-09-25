@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 import { AppState } from "../app.state";
-import { Song } from "../models/songs";
+import { Song } from "../Models/songs";
 
 export const selectSongFeature = createSelector(
     (state: AppState ) => state.songs,

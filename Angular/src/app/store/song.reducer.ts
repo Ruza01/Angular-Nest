@@ -1,5 +1,5 @@
 import { createReducer, on} from "@ngrx/store";
-import {Song} from "../models/songs";
+import {Song} from "../Models/songs";
 import * as Actions from './song.action';
 import { state } from "@angular/animations";
 import { EntityState, createEntityAdapter } from "@ngrx/entity";

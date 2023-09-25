@@ -1,5 +1,5 @@
 import { createAction,props } from "@ngrx/store";
-import { Song, SongRating } from "../models/songs";
+import { Song, SongRating } from "../Models/songs";
 
 export const loadSongs = createAction('Load Songs');   
 

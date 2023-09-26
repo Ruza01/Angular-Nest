@@ -1,0 +1,33 @@
+.divCarCard{
+    border: 1px solid #1f1f1f;
+    height: 600px;
+    width: 370px;
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.divZaSliku{
+    border: 1px solid red;
+    height: 200px;
+    width: 370px;
+    border-radius: 40px;
+}
+
+.divPodaci{
+    border: 1px solid green;
+    height: 300px;
+    width: 350px;
+    border-radius: 40px;
+    margin-top: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.divDugmici{
+    border: 1px solid blue;
+    height: 30px;
+    width: 370px;
+    border-radius: 40px;
+    margin-top: 15px;
+}

@@ -5,7 +5,7 @@ const _sharedReducer = createReducer(initialState,
     on(setLoadingSpinner, (state,action) => {
         return {
             ...state,
-            showLoading: action.status
+            showLoading: action.status //bude true ili false
         }
     }),
     on(setErrorMessage, (state, action) => {

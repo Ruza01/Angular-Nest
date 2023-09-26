@@ -2,3 +2,13 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import "../node_modules/toastr/build/toastr.css";
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+.bg{
+    background-color: #0a4226;
+    z-index: -2;
+    min-height: 90vh;
+}

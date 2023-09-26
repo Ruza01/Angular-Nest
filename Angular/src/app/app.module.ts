@@ -1,37 +1,31 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PlaylistComponent } from './components/playlist/playlist.component';
 import { HttpClientModule }  from '@angular/common/http';
-import { SongThumbComponent } from './components/song-thumb/song-thumb.component';
-import { SongEditorComponent } from './components/song-editor/song-editor.component';
-import { StoreModule } from '@ngrx/store';
-import { songsReducer } from './store/song.reducer';
-import { AppState } from './app.state';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
-import { SongsEffects } from './store/song.effects';
 import { EffectsModule } from '@ngrx/effects';
-import { HeaderComponent } from './components/home/header/header.component';
-import { FooterComponent } from './components/home/footer/footer.component';
-import { BodyComponent } from './components/home/body/body.component';
-import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileModule } from './components/profile/profile.module';
 import { UserAuthModule } from './components/user-auth/user-auth.module';
+import { StoreModule } from '@ngrx/store';
+import { HomeModule } from './components/home/home.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { HeaderComponent } from './components/home/header/header.component';
+import { CarCardComponent } from './components/home/car-card/car-card.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlaylistComponent,
-    SongThumbComponent,
-    SongEditorComponent,
+    HomeComponent,
     HeaderComponent,
-    FooterComponent,
-    BodyComponent,
-    HomeComponent
+    CarCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +36,10 @@ import { UserAuthModule } from './components/user-auth/user-auth.module';
     MatIconModule,
     ProfileModule,
     UserAuthModule,
-    StoreModule.forRoot<AppState>({songs: songsReducer}),
+    EffectsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
       logOnly: !isDevMode(), 
@@ -50,7 +47,8 @@ import { UserAuthModule } from './components/user-auth/user-auth.module';
       trace: false, 
       traceLimit: 75, 
     }),
-    EffectsModule.forRoot([SongsEffects])
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent]

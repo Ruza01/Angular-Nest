@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class CarCardComponent {
   value1 = 'Naziv';
-  value2 = 'Naziv';
-  value3 = 'Naziv';
+  value2 = 'Cena';
+  value3 = 'Godiste';
 }

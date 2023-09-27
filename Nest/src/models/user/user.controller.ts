@@ -2,7 +2,7 @@ import { Body, Controller, HttpStatus, Post, ValidationPipe } from "@nestjs/comm
 import { UserService } from "./user.service";
 import { UserRegisterRequestDto } from "./DTOs/user-register.req.dto";
 import { SETTINGS } from "src/app.utils";
-import { User } from "./Entities/user.entity";
+import { User } from "./entities/user.entity";
 
 
 @Controller('user')

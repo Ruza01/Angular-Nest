@@ -5,8 +5,9 @@ import {IconName, faGoogle} from '@fortawesome/free-brands-svg-icons';
 import { faLock, faUser, faEyeSlash, faEye} from '@fortawesome/free-solid-svg-icons';
 import {Store} from '@ngrx/store'
 import { loginStart } from '../state/auth.actions';
-import { AppState } from '../../store/app.state';
-import { setLoadingSpinner } from '../../store/shared/shared.actions';
+import { AppState } from 'src/app/store/app.state';
+import { setLoadingSpinner } from 'src/app/store/shared/shared.actions';
+
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
-      this.store.dispatch(setLoadingSpinner({status:true}));
+      this.store.dispatch(setLoadingSpinner({ status:true }));
       this.store.dispatch(loginStart({email, password}));
       
     }else{

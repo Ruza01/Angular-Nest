@@ -5,18 +5,15 @@ import { catchError, exhaustMap, map, of, tap } from "rxjs";
 import { UserAuthService } from "../user-auth.service";
 import { Store } from "@ngrx/store";
 import { Router } from "@angular/router";
-import { AppState } from "../../store/app.state";
-import { setErrorMessage, setLoadingSpinner } from "../../store/shared/shared.actions";
+import { setErrorMessage, setLoadingSpinner } from "src/app/store/shared/shared.actions";
+import { AppState } from "src/app/store/app.state";
+
 
 @Injectable()
 export class AuthEffects{
-    constructor(
-        private actions$: Actions,
-        private authService: UserAuthService, 
-        private store: Store<AppState>,
-        private router:Router) {
-
+    constructor(private actions$: Actions, private authService: UserAuthService, private store: Store<AppState>, private router:Router){
     }
+    
     login$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(loginStart),
@@ -24,7 +21,7 @@ export class AuthEffects{
                 return this.authService.login(action.email, action.password)
                 .pipe(
                     exhaustMap(data => {
-                        return this.authService.getUserWithToken(data)
+                        return this.authService.getUserWithToken(data.token)
                                     .pipe(
                                         map(user => {
                                             this.store.dispatch(setLoadingSpinner({status:false}));

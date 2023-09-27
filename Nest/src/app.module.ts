@@ -5,12 +5,15 @@ import { SongsModule } from './songs/songs.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from 'typeorm.config';
 import { AuthModule } from './models/auth/auth.module';
+import { UserModule } from './models/user/user.module';
 
 @Module({
   imports: [
     SongsModule,
     TypeOrmModule.forRoot(typeOrmConfig),
-    AuthModule],
+    AuthModule,
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

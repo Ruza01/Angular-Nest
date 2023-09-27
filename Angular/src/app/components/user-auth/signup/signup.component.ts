@@ -6,9 +6,8 @@ import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-i
 import { Store } from '@ngrx/store';
 import { signupDto } from 'src/app/Dto/signup.dto';
 import { signupStart } from '../state/auth.actions';
-import { AppState } from '../../store/app.state';
-import { setLoadingSpinner } from '../../store/shared/shared.actions';
-
+import { AppState } from 'src/app/store/app.state';
+import { setLoadingSpinner } from 'src/app/store/shared/shared.actions';
 
 @Component({
   selector: 'app-signup',

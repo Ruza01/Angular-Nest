@@ -1,5 +1,5 @@
 import { Song } from "src/models/song.entity";
-import { ConnectionOptions, DataSourceOptions } from "typeorm";
+import { DataSourceOptions } from "typeorm";
 
 
 export const typeOrmConfig: DataSourceOptions = {
@@ -8,7 +8,7 @@ export const typeOrmConfig: DataSourceOptions = {
     port: 5432,
     username: "postgres",
     password: "mysecretpassword",
-    entities: [Song],
+    entities: [__dirname + '/**/entities/*.entity{.ts,.js}'],
     synchronize: true,
-    database: "songs"
+    database: "PolovniAutomobiliDB"
 }

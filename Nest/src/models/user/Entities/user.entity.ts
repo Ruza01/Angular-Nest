@@ -3,6 +3,7 @@ import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGene
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
+    
     //Podaci pri registraciji
     @PrimaryGeneratedColumn()
     id: number;

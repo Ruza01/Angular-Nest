@@ -18,6 +18,7 @@ import { CarCardComponent } from './components/home/car-card/car-card.component'
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { appReducer } from './store/app.state';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { FormsModule } from '@angular/forms';
       traceLimit: 75, 
     }),
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(appReducer),
   ],
   providers: [],
   bootstrap: [AppComponent]

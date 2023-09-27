@@ -52,16 +52,6 @@
                             </div>
                             <small *ngIf="signUpForm.controls['confirmPassword'].dirty && signUpForm.hasError('required','confirmPassword')" class="text-danger">*Confirm password is required!</small>
                             
-                            <label for="skill">Skill:</label>
-                            <div class="form-group">
-                                <div class="input-field" [class.error]="signUpForm.controls['skill'].dirty && signUpForm.hasError('required','skill')">
-                                    <select name="skill" class="form-select" (change)="changeSkill($event)" formControlName="skill">
-                                        
-                                    </select>
-                                </div>
-                            </div>
-                            <small *ngIf="signUpForm.controls['skill'].dirty && signUpForm.hasError('required','skill')" class="text-danger">*Skill is required!</small>
-
                             <button type="submit" class="btn btn-success btn-blcok mt-4 w-100" (click)="onSignup()"> Sign Up </button>
                             <div class="text-center pt-4 text-muted">Already have an account?<a id="forget" routerLink="/login" href="login">Login</a> </div>
                         </form>

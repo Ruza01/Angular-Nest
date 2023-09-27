@@ -79,3 +79,8 @@ img{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
+@import "../../../../../node_modules/toastr/build/toastr.css";
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";

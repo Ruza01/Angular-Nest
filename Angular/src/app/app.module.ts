@@ -12,9 +12,7 @@ import { UserAuthModule } from './components/user-auth/user-auth.module';
 import { StoreModule } from '@ngrx/store';
 import { HomeModule } from './components/home/home.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home/home.component';
-import { HeaderComponent } from './components/home/header/header.component';
-import { CarCardComponent } from './components/home/car-card/car-card.component';
+import { HeaderComponent } from './components/header/header.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
@@ -23,10 +21,7 @@ import { appReducer } from './store/app.state';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
-    CarCardComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -41,6 +36,7 @@ import { appReducer } from './store/app.state';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    HomeModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
       logOnly: !isDevMode(), 

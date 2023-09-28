@@ -1,31 +1,23 @@
-<div class="divCarCard">
+<div class="divCarCard1">
     <div class="divZaSliku">
-        <img src="assets/noCarImage/no-image-available.webp" style="height: 190px; width: 360px; border-radius: 40px;">
+        <img src="assets/noCarImage/no-image-available.webp" style="height: 175px; width: 284px; border-radius: 40px; margin-top: 3px;
+        margin-left: 3px; margin-right: 3px;">
     </div>
     <div class="divPodaci">
-        <mat-form-field class="example-form-field">
-            <mat-label>Clearable input</mat-label>
-            <input matInput type="text" [(ngModel)]="value1">
-            <button *ngIf="value1" matSuffix mat-icon-button aria-label="Clear" (click)="value1=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
-        <mat-form-field class="example-form-field">
-            <mat-label>Clearable input</mat-label>
-            <input matInput type="text" [(ngModel)]="value2">
-            <button *ngIf="value2" matSuffix mat-icon-button aria-label="Clear" (click)="value2=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
-        <mat-form-field class="example-form-field">
-            <mat-label>Clearable input</mat-label>
-            <input matInput type="text" [(ngModel)]="value3">
-            <button *ngIf="value3" matSuffix mat-icon-button aria-label="Clear" (click)="value3=''">
-              <mat-icon>close</mat-icon>
-            </button>
-          </mat-form-field>
+      <div class="DivNaziv">
+        <label id="labelNaziv">Naziv</label>
+        <div>{{value1}}</div>
+      </div>
+      <div class="DivCena">
+        <label id="labelCena">Cena</label>
+        <div>{{value2}}</div>
+      </div>
+      <div class="DivGodiste">
+        <label id="labelGodiste">Godiste</label>
+        <div>{{value3}}</div>
+      </div>
     </div>
     <div class="divDugmici">
-
+      <button mat-button id="basicButton">View More</button>
     </div>
 </div>

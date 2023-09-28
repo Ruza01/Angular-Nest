@@ -1,5 +1,7 @@
-.container{
+.container1233{
     display: flex;
+    background-image: url('../../../../assets/background/pngtree-hd-brick-wall-background-picture-image_206286.jpg');
+    height: 91%;
 }
 
 .divProfileImageCart{
@@ -9,7 +11,7 @@
     margin-top: 20px;
     border: 5px solid #1f1f1f;
     border-radius: 40px;
-    background-color: #1f1f1f;
+    background-color: rgba(31, 31, 31, 0.8);
 }
 
 .divAddCarImage{
@@ -22,5 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: orange;
+    background-color: rgba(255, 165, 0, 0.6);
 }
+
+

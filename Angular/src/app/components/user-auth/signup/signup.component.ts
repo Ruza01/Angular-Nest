@@ -14,6 +14,7 @@ import { setLoadingSpinner } from 'src/app/store/shared/shared.actions';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent {
 
   type: string = "password";
@@ -24,6 +25,7 @@ export class SignupComponent {
   constructor(private fb : FormBuilder, library:FaIconLibrary, private store:Store<AppState>){
     library.addIcons(faLock,faUser, faEyeSlash, faEye, faGoogle);
   }
+
   ngOnInit():void{
     this.signUpForm=this.fb.group({
       name:['',[Validators.required]],
@@ -31,24 +33,16 @@ export class SignupComponent {
       email:['',[Validators.required]],
       username:['',[Validators.required]],
       password:['',[Validators.required]],
-      confirmPassword:['',[Validators.required]],
-      skill:['',[Validators.required]],
+      confirmPassword:['',[Validators.required]]
     })
   }
-  changeSkill(event:any)
-  {
-    this.skill?.setValue(event.target.value, {
-      onlySelf: true,
-    });
-  }
-  get skill() {
-    return this.signUpForm.get('skill');
-  }
+  
   hideShowPass(){
     this.isText ? this.eyeIcon = "eye" : this.eyeIcon = 'eye-slash';
     this.isText ? this.type = "text" : this.type="password";
     this.isText = !this.isText;
   }
+
   onSignup(){
     if(this.signUpForm.valid){
       let signupDto:signupDto = this.signUpForm.value;
@@ -59,6 +53,7 @@ export class SignupComponent {
       this.validateAllFormsFields(this.signUpForm);
     }
   }
+  
   private validateAllFormsFields(formGroup:FormGroup){
     Object.keys(formGroup.controls).forEach(field=>{
       const control = formGroup.get(field);

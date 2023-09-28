@@ -21,17 +21,17 @@ export class AuthEffects{
                 return this.authService.login(action.email, action.password)
                 .pipe(
                     exhaustMap(data => {
-                        return this.authService.getUserWithToken(data.token)
+                        return this.authService.getUserWithToken(data.access_token)
                                     .pipe(
                                         map(user => {
-                                            this.store.dispatch(setLoadingSpinner({status:false}));
+                                            this.store.dispatch(setLoadingSpinner({ status:false }));
                                             return loginSuccess({user});
                                         })
                                     )
                     }),
                     catchError(error => {
-                        this.store.dispatch(setLoadingSpinner({status:false}));
-                        return of(setErrorMessage({errorMsg:error.error.message}));
+                        this.store.dispatch(setLoadingSpinner({ status:false }));
+                        return of(setErrorMessage({ errorMsg:error.error.message }));
                     })
                 );
             })
@@ -42,7 +42,7 @@ export class AuthEffects{
         return this.actions$.pipe(
             ofType(...[loginSuccess, signupSuccess]),
             tap(action => {
-                this.store.dispatch(setErrorMessage({errorMsg:""}));
+                this.store.dispatch(setErrorMessage({ errorMsg:"" }));
                 this.router.navigate(['/']);
             })
         )
@@ -54,12 +54,12 @@ export class AuthEffects{
             exhaustMap(action => this.authService.signupUser(action.signupDto)
                 .pipe(
                 map(user => {
-                    this.store.dispatch(setLoadingSpinner({status:false}));
+                    this.store.dispatch(setLoadingSpinner({ status:false }));
                     return signupSuccess({user})
                 }),
                 catchError(error => {
-                    this.store.dispatch(setLoadingSpinner({status:false}));
-                    return of(setErrorMessage({errorMsg:error.error.message}));
+                    this.store.dispatch(setLoadingSpinner({ status:false }));
+                    return of(setErrorMessage({ errorMsg:error.error.message }));
                 }) 
             ))
         )

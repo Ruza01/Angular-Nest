@@ -45,12 +45,12 @@
                             <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')" class="text-danger">*Password is required and need to have at least one capital letter,small letter, number and character!</small>
 
                             <div class="form-group pt-3">
-                                <div class="input-field" [class.error]="signUpForm.controls['confirmPassword'].dirty && signUpForm.hasError('required','confirmPassword')">
-                                    <input formControlName="confirmPassword" [type]="type" placeholder="Confirm password">
+                                <div class="input-field" [class.error]="signUpForm.controls['confirm'].dirty && signUpForm.hasError('required','confirm')">
+                                    <input formControlName="confirm" [type]="type" placeholder="Confirm password">
                                     <fa-icon (click)="hideShowPass()" [icon]="['fas', eyeIcon]" style="color:rgb(78, 76, 76);"></fa-icon>
                                 </div>
                             </div>
-                            <small *ngIf="signUpForm.controls['confirmPassword'].dirty && signUpForm.hasError('required','confirmPassword')" class="text-danger">*Confirm password is required!</small>
+                            <small *ngIf="signUpForm.controls['confirm'].dirty && signUpForm.hasError('required','confirm')" class="text-danger">*Confirm password is required!</small>
                             
                             <button type="submit" class="btn btn-success btn-blcok mt-4 w-100" (click)="onSignup()"> Sign Up </button>
                             <div class="text-center pt-4 text-muted">Already have an account?<a id="forget" routerLink="/login" href="login">Login</a> </div>

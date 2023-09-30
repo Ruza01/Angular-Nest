@@ -16,12 +16,16 @@ import { HomeComponent } from "./home/home.component";
 import { RouterModule } from "@angular/router";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { FilterComponent } from './filter/filter.component';
+import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
     declarations: [
       CarCardComponent,
       HomeComponent,
+      FilterComponent,
+      InfoComponent,
     ],
     imports: [
       CommonModule,

@@ -9,65 +9,56 @@
         <img src="assets/header/360_F_575158334_WqU7qcHExao3xoegDOkIv5utkIjzezN7-removebg-preview (1).png" alt="Moja slika1" height="100px" width="200px">
     </div>
     <div class="wrapper">
-        <div class="button">
-            <div class="icon">
-                <a href="https://twitter.com/?lang=en" target="_blank">
+        <div class="button" (click)="goToTwitter()">
+                <div class="icon">
                     <i class="fa-brands fa-square-twitter"></i>
-                </a>
-            </div>
+                </div>
             <span>Twitter</span>
         </div>
     </div>
     <div class="wrapper">
-        <div class="button">
+        <div class="button" (click)="goToFacebook()">
             <div class="icon">
-                <a href="https://www.facebook.com/" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
+                <i class="fa-brands fa-facebook"></i>
             </div>
             <span>Facebook</span>
         </div>
     </div>
     <div class="wrapper">
-        <div class="button">
+        <div class="button" (click)="goToInstagram()">
             <div class="icon">
-                <a href="https://www.instagram.com/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+                <i class="fa-brands fa-instagram"></i>
             </div>
             <span>Instagram</span>
         </div>
     </div>
     <div class="wrapper">
-        <div class="button">
+        <div class="button" (click)="goToYoutube()">
             <div class="icon">
-                <a href="https://www.youtube.com/" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
+                <i class="fa-brands fa-youtube"></i>
             </div>
             <span>Youtube</span>
         </div>
     </div>
     <div class="wrapper">
-        <div class="button">
+        <div class="button" (click)="goToLinkedin()">
             <div class="icon">
-                <a href="https://rs.linkedin.com/?original_referer=https%3A%2F%2Fwww.google.com%2F" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
+                <i class="fa-brands fa-linkedin"></i>
             </div>
             <span>Linkedin</span>
         </div>
     </div>
-    <button mat-fab extended id="homeButton" style="margin-left: 400px;">
-        <a [routerLink]="['/home']">
+    <button mat-fab extended id="homeButton" style="margin-left: 400px;" [routerLink]="['/home']" [class.clicked]="clickedButton === 1" (click)="clickedButton = 1">
         <mat-icon>home</mat-icon>
         Home
-        </a>
     </button>
-    <button mat-fab id="profileButton">
-        <a [routerLink]="['/profile']">
+    <button mat-fab id="profileButton" [routerLink]="['/profile']" [class.clicked]="clickedButton === 2" (click)="clickedButton = 2" >
         <mat-icon>View Profile</mat-icon>
         Profile
-        </a>
     </button>
+    <button mat-fab id="logOut"  (click)="logOut()" [routerLink]="['/login']" [class.clicked]="clickedButton === 3" (click)="clickedButton = 3">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+    </button>
+
 </mat-toolbar>

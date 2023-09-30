@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { AddCarImageComponent } from "./add-car-image/add-car-image.component";
 import { AddCarModalComponent } from './add-car-modal/add-car-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfooComponent } from './infoo/infoo.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       ProfileImageComponent,
       ProfileDataComponent,
       AddCarImageComponent,
-      AddCarModalComponent
+      AddCarModalComponent,
+      InfooComponent,
+      VideoComponent
     ],
     imports: [
       CommonModule,

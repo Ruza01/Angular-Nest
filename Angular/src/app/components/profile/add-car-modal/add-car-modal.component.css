@@ -30,3 +30,12 @@
     height: 65px;
 }
   
+
+#basicButton1{
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    border-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}

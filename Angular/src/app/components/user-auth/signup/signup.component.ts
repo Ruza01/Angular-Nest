@@ -33,7 +33,7 @@ export class SignupComponent {
       email:['',[Validators.required]],
       username:['',[Validators.required]],
       password:['',[Validators.required]],
-      confirmPassword:['',[Validators.required]]
+      confirm:['',[Validators.required]]
     })
   }
   

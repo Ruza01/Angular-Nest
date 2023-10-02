@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-more.component.css']
 })
 export class ViewMoreComponent {
+  
+  constructor(){
 
+  }
+  
+  stepBack1(){
+
+  }
+
+  stepForward1(){
+    
+  }
 }

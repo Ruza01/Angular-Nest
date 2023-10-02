@@ -1,12 +1,48 @@
-<p class="nazivDiv">Vokswagen passat</p>
+<div class="divStreliceNaziv">
+  <p class="nazivDiv">Vokswagen passat</p>
+  <div class="streliceDiv"> 
+  <button class="arrow-button"  (click)="stepBack1()"><</button>
+  <button class="arrow-button" (click)="stepForward1()">></button>
+</div>
+  <div class="labelCena">4700€</div>
+</div>
 <div class="divSlikaInfo">
   <div class="divZaSliku1">
     <img src="../../../../assets/noCarImage/no-image-available.webp" id="slika1">
   </div>
-  <div class="infoDiv">
-    podaci
+  <div class="divPodaci">
+    <h3 class="opsteInfo"> Opste informacije </h3>
+    <div class="divGodiste" style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelGodiste">Godiste: </label> <span class="spanGodiste">2006</span>
+    </div>
+    <div class="divStanje" style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelStanje">Stanje:</label>  <span class="spanStanje">Nov</span>
+    </div>
+    <div class="divMarka"  style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelMarka">Marka: </label> <span class="spanMarka">BMW</span>
+    </div>
+    <div class="divModel" style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelModel">Model: </label> <span class="spanModel">X3</span>
+    </div>
+    <div class="divKilometraza" style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelKilometraza">Kilometraza: </label> <span class="spanKilometraza">220789</span>
+    </div>
+    <div class="divKaroserija"  style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelKaroserija">Karoserija: </label> <span class="spanKaroserija">limuzina</span>
+    </div>
+    <div class="divGorivo"  style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelGorivo">Gorivo: </label> <span class="spanGorivo">Dizel</span>
+    </div>
+    <div class="divKubikaza"  style="margin-top: 10px; border-bottom: 1px solid orange;">
+      <label class="labelKubikaza">Kubikaza: </label> <span class="spanKubikaza">1998</span>
+    </div>
   </div>
 </div>
-<div class="divRegistracija">
-  podaci za registraciju i dugme neko
+<div class="divRegistracijaKasko">
+  <div class="divReg">
+    Cena registracije ovog vozila: od <span class="zelenaBoja"> 100.000 </span> do <span class="zelenaBoja"> 120.000 </span> 
+  </div>
+  <div class="divKasko">
+    Cena KASKO osiguranja za ovo vozilo: od <span class="zelenaBoja"> 40.000 </span> do <span class="zelenaBoja"> 70.000 </span> 
+  </div>
 </div>

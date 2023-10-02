@@ -23,17 +23,6 @@
     
     <div *ngIf="showAdditionalContent" class="blur-background" (click)="closeAdditionalContent()"></div>
     <div *ngIf="showAdditionalContent" class="divContent">
-      <p class="nazivDiv">Vokswagen passat</p>
-      <div class="divSlikaInfo">
-        <div class="divZaSliku1">
-          <img src="../../../../assets/noCarImage/no-image-available.webp" id="slika1">
-        </div>
-        <div class="infoDiv">
-          podaci
-        </div>
-      </div>
-      <div class="divRegistracija">
-        podaci za registraciju i dugme neko
-      </div>
+      <app-view-more></app-view-more>
     </div>
 </div>

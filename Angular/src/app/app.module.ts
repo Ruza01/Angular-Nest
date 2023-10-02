@@ -21,7 +21,7 @@ import { appReducer } from './store/app.state';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

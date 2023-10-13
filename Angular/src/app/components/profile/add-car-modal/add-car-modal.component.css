@@ -18,7 +18,7 @@
     font-size: 44px; 
     cursor: pointer; 
     padding: 5px 10px;
-    margin-left: 220px;
+    margin-left: 110px;
     text-shadow: 0 0 10px #1f1f1f;
 }
   
@@ -37,5 +37,14 @@
     border-radius: 10px;
     border-right: 20px;
     margin-bottom: 20px;
-    margin-left: 30px;
+    margin-left: 80px;
+}
+
+#basicButton2{
+    color: white;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    border-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
 }

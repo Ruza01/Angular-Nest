@@ -1,4 +1,5 @@
-import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Car } from 'src/models/car/entities/car.entity';
+import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 
 @Entity({ name: 'users' })
@@ -26,6 +27,8 @@ export class User extends BaseEntity {
     @CreateDateColumn()
     createdAt: Date;
 
+    @OneToMany(type => Car, car => car.user)
+    userCars: Car[];
     
 
 

@@ -3,15 +3,15 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AppState } from "src/app/app.state";
 import { ProfileService } from "../profile.service";
 import { Store } from "@ngrx/store";
-import { addCar, addCarImages, addCarImagesSucces } from "./car.action";
-import { map, mergeMap } from "rxjs";
-import { create } from "domain";
+import { addCar, addCarImages, addCarImagesSucces, getProfileImagee, getProfileImageSucces, uploadProfileImage } from "./car.action";
+import { exhaustMap, map, mergeMap } from "rxjs";
+import { DomSanitizer } from "@angular/platform-browser";
 
 
 @Injectable()
 export class CarEffects {
 
-    constructor(private actions$: Actions, private store: Store<AppState>, private profileService: ProfileService ){
+    constructor(private actions$: Actions, private store: Store<AppState>, private profileService: ProfileService, private sanitizer: DomSanitizer){
         
     }
 
@@ -34,6 +34,34 @@ export class CarEffects {
                     )
                 })
             ))
+        )
+    })
+
+    profileImage$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(getProfileImagee),
+            exhaustMap(action => this.profileService.getProfileImage(action.id)
+                .pipe(
+                    map( blob => {
+                        let objectUrl = URL.createObjectURL(blob);
+                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+                        return getProfileImageSucces({url})
+                    })
+                ))
+        )
+    })
+
+    uploadProfileImage$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(uploadProfileImage),
+            exhaustMap(action => this.profileService.uploadImage(action.id, action.file)
+                .pipe(
+                    map(blob => {
+                        let objectUrl = URL.createObjectURL(blob);
+                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+                        return getProfileImageSucces({url});
+                    })
+                ))
         )
     })
 }

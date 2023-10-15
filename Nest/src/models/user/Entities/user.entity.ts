@@ -27,6 +27,9 @@ export class User extends BaseEntity {
     @CreateDateColumn()
     createdAt: Date;
 
+    @Column({ nullable:true })
+    profileImagePath: string;
+
     @OneToMany(type => Car, car => car.user)
     userCars: Car[];
     

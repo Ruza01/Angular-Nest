@@ -32,4 +32,16 @@ export class ProfileService {
         return this.httpClient.get(`${api}/car/getImage/${id}`);
     }
 
+    getProfileImage(id: number | undefined){
+        const requestOptions: Object = { responseType: 'blob'};
+        return this.httpClient.get<any>(`${api}/profile-image/${id}`, requestOptions);
+    }
+
+    uploadImage(id: number | undefined, file: File){
+        let formData = new FormData();
+        formData.append('file', file, file.name);
+        const requestOptions: Object = { responseType: 'blob' };
+        return this.httpClient.post<any>(`${api}/uploadImage/${id}`, formData, requestOptions);
+    }
+
 }

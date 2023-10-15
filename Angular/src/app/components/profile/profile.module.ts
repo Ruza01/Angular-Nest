@@ -19,6 +19,11 @@ import { AddCarModalComponent } from './add-car-modal/add-car-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfooComponent } from './infoo/infoo.component';
 import { VideoComponent } from './video/video.component';
+import { EffectsModule } from "@ngrx/effects";
+import { CarEffects } from "./state/car.effects";
+import { StoreModule } from "@ngrx/store";
+import { PROFILE_STATE_NAME } from "./state/car.selector";
+import { ProfileReducer } from "./state/car.reducer";
 
 @NgModule({
     declarations: [
@@ -47,6 +52,8 @@ import { VideoComponent } from './video/video.component';
       NgIf,
       MatButtonModule,
       BrowserAnimationsModule,
+      EffectsModule.forFeature([CarEffects]),
+      StoreModule.forFeature(PROFILE_STATE_NAME,ProfileReducer)
       
     ]
 })

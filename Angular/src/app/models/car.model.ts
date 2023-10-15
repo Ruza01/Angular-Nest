@@ -14,4 +14,5 @@ export interface Car{
     cena: number;
     fiksnaCena: string;
     zamena: string;
+    imageUrls: string[];
 }

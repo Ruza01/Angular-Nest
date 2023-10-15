@@ -52,30 +52,40 @@ export class CarController {
         return response;
     }
 
-    // @Get('getImage/:id')
-    // async getImagesCars(@Param('id', ParseIntPipe) id: number, @Res() res){
+    @Get('getImage/:id')
+    async getImagesCars(@Param('id', ParseIntPipe) id: number, @Res() res){
         
-    //     const readDir = util.promisify(fs.readdir);
-    //     const readFile = util.promisify(fs.readFile);
-    //     const directory = `${process.cwd()}/uploads/carImages/${id}`;
-    //     const response = { data: []};
+        const readDir = util.promisify(fs.readdir);
+        const readFile = util.promisify(fs.readFile);
+        const directory = `${process.cwd()}/uploads/carImages/${id}`;
+        const response = { data: []};
 
-    //     try{
-    //         let files: Promise<Buffer>[];
-    //         if(fs.existsSync(directory)){
+        try{
+            let files: Promise<Buffer>[];
+            if(fs.existsSync(directory)){
                 
-    //             const fileNames = await readDir(directory);
-    //             files = fileNames.map( async (filename) => {
-    //                 const filepath = directory + "/" + filename;
-    //                 return readFile(filepath);
-    //             })
-    //         }
-    //         else{
-    //             files.push(readFile(`${process.cwd()}/uploads/common`));
-    //         }
-    //     }catch{
+                const fileNames = await readDir(directory);
+                files = fileNames.map( async (filename) => {
+                    const filepath = directory + "/" + filename;
+                    return readFile(filepath);
+                })
+            }
+            else{
+                files.push(readFile(`${process.cwd()}/uploads/common`));
+            }
 
-    //     }
-    // }
+            Promise.all(files)
+            .then((fileContents) => {
+                response.data = fileContents;
+                res.json(response);
+            })
+            .catch((error) => {
+                res.status(400).json(response);
+            });
+
+        }catch(error){
+            res.status(400).json(response);
+        }
+    }
 
 }

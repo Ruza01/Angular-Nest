@@ -1,4 +1,5 @@
-<div id="carCardd">
-    <img src="assets/noCarImage/no-image-available.webp" id="imgCarr">
+<div id="carCardd" *ngFor="let car of cars">
+    <!--src="assets/noCarImage/no-image-available.webp"-->
+    <img [src]="car.imageUrls[0]"  id="imgCarr">
 </div>
 

@@ -33,15 +33,15 @@ export class ProfileService {
     }
 
     getProfileImage(id: number | undefined){
-        const requestOptions: Object = { responseType: 'blob'};
-        return this.httpClient.get<any>(`${api}/profile-image/${id}`, requestOptions);
+        const requestOptions: Object = { responseType: 'blob'}; //ocekuje se binarni odgovor sa servera (slika u binarnom formatu )
+        return this.httpClient.get<any>(`${api}/user/profile-image/${id}`, requestOptions); 
     }
 
     uploadImage(id: number | undefined, file: File){
-        let formData = new FormData();
+        let formData = new FormData();  //koristi se za konstrukciju kljuc-vrednost parova koji se salju sa HTTP zahtevima (vezano za datoteke sa servera)
         formData.append('file', file, file.name);
         const requestOptions: Object = { responseType: 'blob' };
-        return this.httpClient.post<any>(`${api}/uploadImage/${id}`, formData, requestOptions);
+        return this.httpClient.post<any>(`${api}/user/uploadImage/${id}`, formData, requestOptions);
     }
 
 }

@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { User } from "src/models/user/entities/user.entity";
-import { BaseEntity, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({ name: "cars"})
@@ -9,40 +9,40 @@ export class Car extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @IsNotEmpty()
+    @Column()
     stanje: string;
 
-    @IsNotEmpty()
+    @Column()
     marka: string;
 
-    @IsNotEmpty()
+    @Column()
     model: string;
 
-    @IsNotEmpty()
+    @Column()
     godiste: number;
 
-    @IsNotEmpty()
+    @Column()
     kilometraza: number;
 
-    @IsNotEmpty()
+    @Column()
     karoserija: string;
     
-    @IsNotEmpty()
+    @Column()
     gorivo: string;
 
-    @IsNotEmpty()
+    @Column()
     kubikaza: number;
 
-    @IsNotEmpty()
+    @Column()
     snagaMotora: number;
 
-    @IsNotEmpty()
+    @Column()
     cena: number;
 
-    @IsNotEmpty()
+    @Column()
     fiksnaCena: string;
 
-    @IsNotEmpty()
+    @Column()
     zamena: string;
 
     @ManyToOne(type => User, user => user.userCars)

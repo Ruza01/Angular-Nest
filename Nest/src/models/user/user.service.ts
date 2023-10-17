@@ -27,25 +27,23 @@ export class UserService{
         return User.findOne({ where: {email} });
     }
 
-    async updateUser(id:number, user:User)
-    {
+    async updateUser(id:number, user:User) {
         return User.update(id, user);
     }
-    async deleteUser(id:number)
-    {
+
+    async deleteUser(id:number) {
         return User.delete(id);
     }
     
-    async getUserById(id:number)
-    {
-        return User.findOneBy({id});
+    async getUserById(id: number) {
+        return User.findOneBy({ id });
     }
-    async getProfileData(id:number)
-    {
+
+    /*async getProfileData(id:number) {
         return User.createQueryBuilder('user')
                     .where("user.id = :id", { id: id })
                     .select(
                         'user.id, user.name, user.surname, user.username, user.email, user.skill'
                     ).getRawOne();
-    }
+    }*/
 }

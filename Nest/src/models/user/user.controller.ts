@@ -65,36 +65,34 @@ export class UserController {
     }
 
     @Get('profile-image/:id')
-    async getProfileImage(@Param('id', ParseIntPipe) id:number, @Res() res) {
+    async getProfileImage(@Param('id', ParseIntPipe) id:number, @Res() res) {  //ocekuje parametar id iz rute koji ce biti parsiran kao broj, res je odgovor koji ce se poslati korisniku
         
         const user = await this.userService.getUserById(id);
         let imagePath;
         if(user.profileImagePath != null){
-            imagePath = `${process.cwd()}/uploads/carImages/${id}/${user.profileImagePath}`;
+            imagePath = `${process.cwd()}/uploads/carImages/${id}/${user.profileImagePath}`; //cwd trenutni radni direktorijum
         }
         else{
             imagePath = `${process.cwd()}/uploads/carImages`;
         }
         
-
-        return of(res.sendFile(imagePath));
+        return of(res.sendFile(imagePath)); //of pravi observable koji emituje taj odgovor, u (...) salje sliku korisniku kao odg na zahtev
 
     }
 
-    @Get('profile-data/:id')
+    /*@Get('profile-data/:id')
     async getProfileData(@Param('id', ParseIntPipe) id:number) {
         const user = await this.userService.getProfileData(id);
 
         if(!user)
             throw new BadRequestException("User not found");
         return user;
-    }
+    }*/
 
     
 }
 
-function deleteFiles(path:string)
-{
+function deleteFiles(path:string){
     readdir(path, (err, files) => {
         if(err) throw new BadRequestException("could not read directory");
 

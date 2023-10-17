@@ -3,7 +3,7 @@
         <img [src]="imageUrl | async" id="profileImg">
         <div class="divProfileDataIInput">
             <div>
-                <input type="file" id="image-input" (change)="uploadImage($event)" style="width: 77px; height: 20px; font-size: 10px; border-radius: 20px;">
+                <input type="file" id="image-input" (change)="uploadImage($event)"> <!--$event je obj, sadrzi inofo o promeni -->
             </div>
             <div class="divProfileData">
                 P<br>r<br>o<br>f<br>i<br>l<br>e<br><br>D<br>a<br>t<br>a

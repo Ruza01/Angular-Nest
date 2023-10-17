@@ -22,7 +22,6 @@ export class ProfileDataComponent implements OnInit {
   user$!: Observable<User | null>;
 
   constructor(private store: Store<AppState>){
-
   }
 
   ngOnInit(): void {

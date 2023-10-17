@@ -43,8 +43,8 @@ export class CarEffects {
             exhaustMap(action => this.profileService.getProfileImage(action.id)
                 .pipe(
                     map( blob => {
-                        let objectUrl = URL.createObjectURL(blob);
-                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+                        let objectUrl = URL.createObjectURL(blob);  //pravimo objekat od tog blob-a (koji predstavlja sliku u binarnom formatu dobijenog od servera)
+                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl); //objekat prolazi kroz domSanitizer servis, tacnije kroz njegocu metodu by.. (radi sigurnostii bezbednosti i manje problema i gresaka)
                         return getProfileImageSucces({url})
                     })
                 ))
@@ -56,12 +56,12 @@ export class CarEffects {
             ofType(uploadProfileImage),
             exhaustMap(action => this.profileService.uploadImage(action.id, action.file)
                 .pipe(
-                    map(blob => {
-                        let objectUrl = URL.createObjectURL(blob);
-                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
-                        return getProfileImageSucces({url});
-                    })
-                ))
+                map(blob => {
+                    let objectUrl = URL.createObjectURL(blob);
+                    let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl);
+                    return getProfileImageSucces({url});
+                })
+            ))
         )
     })
 }

@@ -21,7 +21,7 @@ export class UserController {
     }
 
     @Post('uploadImage/:id')
-    @UseInterceptors(FileInterceptor('file', { 
+    @UseInterceptors(FileInterceptor('file', { //Ove postavke omogućavaju kontrolu nad uploadovanim datotekama, uključujući gde će biti smeštene, kako će se nazivati i koje vrste datoteka će biti prihvaćene.
         storage: diskStorage({
             destination(req, file, callback) {
                 const start = req.url.indexOf("uploadImage/");
@@ -49,7 +49,7 @@ export class UserController {
             callback(null, true);
         },
     }))
-    async uploadImage(@UploadedFile() file:Express.Multer.File, @Param('id', ParseIntPipe) id:number, @Res() res) {
+    async uploadImage(@UploadedFile() file:Express.Multer.File, @Param('id', ParseIntPipe) id:number, @Res() res) { //prvi parametar funkcije je slika koja se uploaduje
         if(!file){
             throw new BadRequestException("File is not an image");
         }

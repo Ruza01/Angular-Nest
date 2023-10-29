@@ -1,5 +1,8 @@
 <div class="divStrelice">
-    <button mat-button id="basicButton2">Dodaj sliku/slike</button>
+    <button mat-button id="basicButton2" (click)="photos.click()">
+        Dodaj sliku/slike
+        <input #photos type="file" multiple (change)="addPhotos($event)" style="display:none;">
+    </button>
     <button class="arrow-button" (click)="stepBack()"><</button>
     <button class="arrow-button" (click)="stepForward()">></button>
     <button mat-button id="basicButton1">Postavi oglas</button>

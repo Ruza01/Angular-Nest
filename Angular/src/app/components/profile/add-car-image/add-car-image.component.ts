@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { Car } from 'src/app/Models/car.model';
 import { ProfileService } from '../profile.service';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.state';
-import { addCarImages } from '../state/car.action';
+import { addCarImages } from '../../car/state/car.action';
+import { AppState } from 'src/app/store/app.state';
+
 
 @Component({
   selector: 'app-add-car-image',

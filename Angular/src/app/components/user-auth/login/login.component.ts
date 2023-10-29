@@ -7,6 +7,7 @@ import {Store} from '@ngrx/store'
 import { loginStart } from '../state/auth.actions';
 import { AppState } from 'src/app/store/app.state';
 import { setLoadingSpinner } from 'src/app/store/shared/shared.actions';
+import { Route, Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   eyeIcon: IconName = 'eye-slash'; 
   loginForm!: FormGroup;
   
-  constructor(private fb: FormBuilder, library:FaIconLibrary, private store:Store<AppState>){
+  constructor(private fb: FormBuilder, library:FaIconLibrary, private store:Store<AppState>, 
+    private router: Router){
     library.addIcons(faLock,faUser, faEyeSlash, faEye, faGoogle);
   }
 

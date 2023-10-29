@@ -13,10 +13,6 @@ export class ProfileService {
     constructor(private httpClient: HttpClient){
 
     }
-    
-    addCar(carDto: AddCarDto, carId: number){
-        return this.httpClient.patch(`${api}/car/addCar/${carId}`, carDto);
-    }
 
     uploadImages(files: File[], id: number){
         let formData = new FormData();

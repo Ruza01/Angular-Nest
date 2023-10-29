@@ -1,5 +1,5 @@
 import { createFeature, createFeatureSelector, createSelector } from "@ngrx/store"
-import { ProfileState } from "./car.state"
+import { ProfileState } from "./profile.state"
 
 
 

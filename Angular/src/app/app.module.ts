@@ -17,6 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { appReducer } from './store/app.state';
+import { CarComponent } from './components/car/car.component';
+import { CarEffects } from './components/car/state/car.effects';
+import { ProfileEffects } from './components/profile/state/profile.effects';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,7 @@ import { appReducer } from './store/app.state';
       trace: false, 
       traceLimit: 75, 
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CarEffects,ProfileEffects]),
     StoreModule.forRoot(appReducer),
   ],
   providers: [],

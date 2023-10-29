@@ -1,4 +1,4 @@
-import { Controller, Post, Get, UseInterceptors, UploadedFiles, Param, ParseIntPipe, Res } from '@nestjs/common';
+import { Controller, Post, Get, UseInterceptors, UploadedFiles, Param, ParseIntPipe, Res, Patch, Body } from '@nestjs/common';
 import { CarService } from './car.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -6,6 +6,7 @@ import { existsSync, mkdirSync } from 'fs';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as util from 'util';
+import { carDto } from './DTOs/car.dto';
 
 @Controller('car')
 export class CarController {
@@ -87,5 +88,21 @@ export class CarController {
             res.status(400).json(response);
         }
     }
+
+    @Post('addEmpty')
+    async addEmptyCar(){
+        return this.carService.addEmptyCar();
+    }
+
+    @Get('getAllCars')
+    async getAllCars(){
+        return this.carService.getAllCars();
+    }
+
+    @Patch('addCar/:id')
+    async addCar(@Body() carDto: carDto, @Param('id', ParseIntPipe) id: number){
+        return this.carService.addCar(carDto,id);
+    }
+
 
 }

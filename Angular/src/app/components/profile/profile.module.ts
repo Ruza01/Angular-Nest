@@ -20,10 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfooComponent } from './infoo/infoo.component';
 import { VideoComponent } from './video/video.component';
 import { EffectsModule } from "@ngrx/effects";
-import { CarEffects } from "./state/car.effects";
+import { ProfileEffects } from "./state/profile.effects";
 import { StoreModule } from "@ngrx/store";
-import { PROFILE_STATE_NAME } from "./state/car.selector";
-import { ProfileReducer } from "./state/car.reducer";
+import { PROFILE_STATE_NAME } from "./state/profile.selector";
+import { ProfileReducer } from "./state/profile.reducer";
 
 @NgModule({
     declarations: [
@@ -52,8 +52,8 @@ import { ProfileReducer } from "./state/car.reducer";
       NgIf,
       MatButtonModule,
       BrowserAnimationsModule,
-      EffectsModule.forFeature([CarEffects]),
-      StoreModule.forFeature(PROFILE_STATE_NAME,ProfileReducer)
+      EffectsModule.forFeature([ProfileEffects]),
+      StoreModule.forFeature(PROFILE_STATE_NAME, ProfileReducer)
       
     ]
 })

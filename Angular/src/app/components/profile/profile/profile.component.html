@@ -8,12 +8,15 @@
     <div class="divInfoVideo">
         <div class="divInfo">
             <app-infoo></app-infoo>
+            <div class="divDodajSbojOglas">
+                <button mat-button id="basicButton3" (click)="addECar()">Dodaj svoj oglas !</button>
+            </div>
         </div>
         <div class="videoDiv">
             <app-video></app-video>
         </div>
     </div>
-    <div class="divAddCarImage">
+    <div *ngIf="showContent" class="divAddCarImage">
         <app-add-car-image></app-add-car-image>
         <div class="divAddCarModal">
             <app-add-car-modal></app-add-car-modal>

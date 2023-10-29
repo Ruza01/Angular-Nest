@@ -3,8 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/Models/user.model';
-import { AppState } from 'src/app/app.state';
 import { getUser } from '../../user-auth/state/auth.selector';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-profile-data',

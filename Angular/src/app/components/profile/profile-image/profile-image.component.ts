@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/Models/user.model';
 import { ProfileService } from '../profile.service';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.state';
 import { getUser, getUserId } from '../../user-auth/state/auth.selector';
-import { getProfileImage } from '../state/car.selector';
-import { getProfileImagee, uploadProfileImage } from '../state/car.action';
+import { getProfileImage } from '../state/profile.selector';
+import { getProfileImagee, uploadProfileImage } from '../state/profile.action';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-profile-image',

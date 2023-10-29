@@ -13,4 +13,5 @@ export interface AddCarDto{
     cena: number;
     fiksnaCena: string;
     zamena: string;
+    userId: number;
 }

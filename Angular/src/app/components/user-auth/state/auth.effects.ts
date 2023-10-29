@@ -25,6 +25,7 @@ export class AuthEffects{
                                     .pipe(
                                         map(user => {
                                             this.store.dispatch(setLoadingSpinner({ status:false }));
+                                            this.router.navigate(['home']);
                                             return loginSuccess({user});
                                         })
                                     )

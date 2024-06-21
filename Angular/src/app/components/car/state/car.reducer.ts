@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { carAdapter, initialState } from "./car.state";
-import { addCarImagesSucces, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
+import { addCarImagesSuccess, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
 
 
 const _carReducer = createReducer(initialState,
@@ -17,7 +17,7 @@ const _carReducer = createReducer(initialState,
             newCarImageUrls: ["../../../assets/noCarImage/no-image-available.webp"]
         }
     }),
-    on(addCarImagesSucces, (state, action) => {
+    on(addCarImagesSuccess, (state, action) => {
         return{
             ...state,
             newCarImageUrls: action.imageUrls

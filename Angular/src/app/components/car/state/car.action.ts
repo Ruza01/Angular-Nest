@@ -6,7 +6,7 @@ export const addCar = createAction('Add Car', props<{ carDto: AddCarDto, carId: 
 export const addCarSucces = createAction('Add Car Succes', props<{ car: Car }>() );
 
 export const addCarImages = createAction('Add Car Image', props<{ files: any, id: number }>() );
-export const addCarImagesSucces = createAction('Add Car Image Succes', props<{ imageUrls: string[] }>() );
+export const addCarImagesSuccess = createAction('Add Car Image Succes', props<{ imageUrls: string[] }>() );
 
 export const addEmptyCar = createAction('Add empty car');
 export const addEmptyCarSuccess = createAction('Add empty car success', props<{ newCarId:number }>() );

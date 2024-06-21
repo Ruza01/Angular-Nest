@@ -7,6 +7,7 @@ import { CarService } from '../../car/car.service';
 import { AppState } from 'src/app/store/app.state';
 import { AddCarDto } from 'src/app/Dto/add-car.dto';
 import { getUserId } from '../../user-auth/state/auth.selector';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-car-modal',
@@ -14,10 +15,6 @@ import { getUserId } from '../../user-auth/state/auth.selector';
   styleUrls: ['./add-car-modal.component.css']
 })
 export class AddCarModalComponent implements OnInit{
-
-  constructor(private profileService: ProfileService, private store: Store<AppState>, private carService: CarService){
-
-  }
 
   value1 = 'Stanje';
   value2 = 'Marka';
@@ -32,6 +29,26 @@ export class AddCarModalComponent implements OnInit{
   value11 = 'Fiksna cena';
   value12 = 'Zamena';
   imageUrl: string[] = [];
+  carForm!: FormGroup;
+
+  constructor(private profileService: ProfileService, private store: Store<AppState>,
+     private carService: CarService, private fb: FormBuilder){
+      
+      this.carForm = fb.group({
+        stanje: [''],
+        marka: [''],
+        model: [''],
+        godiste: [0],
+        kilometraza: [0],
+        karoserija: [''],
+        gorivo: [''],
+        kubikaza: [0],
+        snagaMotora: [0],
+        cena: [''],
+        fiksnaCena: [''],
+        zamena: [''],
+      })
+  }
 
   ngOnInit(): void {
     //this.store.select(selectNewCarImages).subscribe(images => this.imageUrl = images);
@@ -62,26 +79,14 @@ export class AddCarModalComponent implements OnInit{
   addCar(){
     let carId: number = -1;
     let userId: number = -1;
-    const carDto: AddCarDto = {
-      stanje: '', 
-        marka: '',
-        model: '',
-        godiste: 0,
-        kilometraza: 0,
-        karoserija: '',
-        gorivo: '',
-        kubikaza: 0,
-        snagaMotora: 0,
-        cena: 0,
-        fiksnaCena: '',
-        zamena: '',
-        userId: -1 
-    } ;
+    const carDto: AddCarDto = this.carForm.value;
+
     this.store.select(selectNewCarId).subscribe(val => carId = val);
     this.store.select(getUserId).subscribe((val) => userId = val);
 
     carDto.userId = userId;
     this.store.dispatch(addCar({ carDto, carId}));
+    console.log("dddd");
   }
 
 }

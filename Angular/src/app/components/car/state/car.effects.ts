@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { addCar, addCarImages, addCarImagesSucces, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
+import { addCar, addCarImages, addCarImagesSuccess, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
 import { exhaustMap, map, mergeMap } from "rxjs";
 import { Store } from "@ngrx/store";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -31,7 +31,7 @@ export class CarEffects {
                                 const blob = new Blob([imageData], { type: 'image/png'});   //Zatim se koristi Blob konstruktor da bi se stvorio blob objekat koji predstavlja sliku.Blob je JavaScript objekat koji predstavlja binarne podatke,u ovom slucaju sliku u formtu png
                                 imageUrls.push(URL.createObjectURL(blob));  //stvaramo jedinstven url za taj blob objekat.Taj url se dodaje u niz imageUrls, cime se cuva url slike
                             })
-                            return addCarImagesSucces({imageUrls});
+                            return addCarImagesSuccess({imageUrls});
                         })
                     )
                 })

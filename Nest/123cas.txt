@@ -1,3 +1,4 @@
+1 cas
 Umesto komponenti imamo kontrolere
 Glavni kontroler je appController
 U main-u je napravio novi web server na portu 3000
@@ -31,7 +32,7 @@ i onda ce neki portovi da se otvore, i ja cu da pristupam preko tih portova ili 
 Taj kontejner je kao mala virtuelna masina
 
 3.Sa docker run ja pokrecem instancu kontejnera
-docker run --name postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+docker run --name postgres -e POSTGRES_PASSWORD=mysecretpassword -dp 5432:5432 postgres
 ==========================================================================================================================================
 
 Docker - imamo slike i kontejnere, slika nam je templejt kao klasa, kontejenri su instance te slike

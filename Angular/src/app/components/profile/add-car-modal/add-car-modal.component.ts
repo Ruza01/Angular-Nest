@@ -7,7 +7,8 @@ import { CarService } from '../../car/car.service';
 import { AppState } from 'src/app/store/app.state';
 import { AddCarDto } from 'src/app/Dto/add-car.dto';
 import { getUserId } from '../../user-auth/state/auth.selector';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-car-modal',
@@ -28,26 +29,27 @@ export class AddCarModalComponent implements OnInit{
   value10 = 'Cena';
   value11 = 'Fiksna cena';
   value12 = 'Zamena';
+
   imageUrl: string[] = [];
-  carForm!: FormGroup;
+
+  carForm : FormGroup = new FormGroup({
+    stanje: new FormControl('',Validators.required),
+    marka: new FormControl('',Validators.required),
+    model: new FormControl('',Validators.required),
+    godiste: new FormControl('',Validators.required),
+    kilometraza: new FormControl('',Validators.required),
+    karoserija: new FormControl('',Validators.required),
+    gorivo: new FormControl('',Validators.required),
+    kubikaza: new FormControl('',Validators.required),
+    snagaMotora: new FormControl('',Validators.required),
+    cena: new FormControl('',Validators.required),
+    fiksnaCena: new FormControl('',Validators.required),
+    zamena: new FormControl('',Validators.required), 
+  })
 
   constructor(private profileService: ProfileService, private store: Store<AppState>,
-     private carService: CarService, private fb: FormBuilder){
-      
-      this.carForm = fb.group({
-        stanje: [''],
-        marka: [''],
-        model: [''],
-        godiste: [0],
-        kilometraza: [0],
-        karoserija: [''],
-        gorivo: [''],
-        kubikaza: [0],
-        snagaMotora: [0],
-        cena: [''],
-        fiksnaCena: [''],
-        zamena: [''],
-      })
+     private carService: CarService, private fb: FormBuilder, private snackBar: MatSnackBar){
+ 
   }
 
   ngOnInit(): void {
@@ -76,17 +78,23 @@ export class AddCarModalComponent implements OnInit{
     }
   }
 
-  addCar(){
-    let carId: number = -1;
-    let userId: number = -1;
-    const carDto: AddCarDto = this.carForm.value;
+  addCar() {
+    if (this.carForm.valid) {
+      const carDto: AddCarDto = this.carForm.value;
 
-    this.store.select(selectNewCarId).subscribe(val => carId = val);
-    this.store.select(getUserId).subscribe((val) => userId = val);
+      this.store.select(getUserId).subscribe(userID => {
+        carDto.userId = userID;
+        this.store.dispatch(addCar({ carDto }));
+      });
 
-    carDto.userId = userId;
-    this.store.dispatch(addCar({ carDto, carId}));
-    console.log("dddd");
+      this.snackBar.open('Uspešno ste postavili oglas!', 'Zatvori', {
+        duration: 7000,
+      });
+    } else {
+      this.snackBar.open('Morate popuniti sva polja i dodati slike!', 'Zatvori', {
+        duration: 7000,
+      });
+    }
   }
-
 }
+

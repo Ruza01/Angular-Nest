@@ -52,10 +52,10 @@ export class CarEffects {
     addCar$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(addCar),
-            exhaustMap(action => this.carService.addCar(action.carDto, action.carId).pipe(
+            exhaustMap(action => this.carService.addCar(action.carDto).pipe(
                 map((car: any) => {
                     let imageUrls: string[] = [];
-                    this.store.select(selectNewCarImages).subscribe(images => imageUrls = images);
+                    //this.store.select(selectNewCarImages).subscribe(images => imageUrls = images);
                     const carObj: Car = {
                         id: car.id,
                         stanje: car.stanje,

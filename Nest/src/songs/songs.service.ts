@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class SongsService {
     
-    constructor(@InjectRepository(Song) private songRepository: Repository<Song>){
+    constructor(@InjectRepository(Song) private songRepository: Repository<Song>){  //ovaj repository mu daje crud operacije
     }
 
     public getAll(){

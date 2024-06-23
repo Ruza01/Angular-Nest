@@ -49,14 +49,15 @@ export class CarService {
         return Car.delete(id);
     }
 
-    async addCar(carDto: carDto, id: number){
+    async addCar(carDto: carDto){
         try{
             const user = await this.userService.getUserById(carDto.userId);  //user koji postavlja auto
             if(user == null){
                 throw new BadRequestException('user not found');
             }
 
-            let car = await this.getCarById(id);
+            //let car = await this.getCarById(id);
+            let car = new Car();
             car.stanje = carDto.stanje;
             car.marka = carDto.marka;
             car.model = carDto.model;
@@ -71,8 +72,9 @@ export class CarService {
             car.zamena = carDto.zamena;
             car.user = user;
 
-            this.carRepository.update(car.id, car);
-            return car;
+            //this.carRepository.update(car.id, car);
+            const asCar = await this.carRepository.save(car);
+            return asCar;
 
         }catch(e){
             throw new BadRequestException(e.message);

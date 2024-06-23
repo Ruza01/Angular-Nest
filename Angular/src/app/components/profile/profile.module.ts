@@ -24,6 +24,7 @@ import { ProfileEffects } from "./state/profile.effects";
 import { StoreModule } from "@ngrx/store";
 import { PROFILE_STATE_NAME } from "./state/profile.selector";
 import { ProfileReducer } from "./state/profile.reducer";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,7 @@ import { ProfileReducer } from "./state/profile.reducer";
       AddCarImageComponent,
       AddCarModalComponent,
       InfooComponent,
-      VideoComponent
+      VideoComponent,
     ],
     imports: [
       CommonModule,
@@ -52,6 +53,7 @@ import { ProfileReducer } from "./state/profile.reducer";
       NgIf,
       MatButtonModule,
       BrowserAnimationsModule,
+      MatSnackBarModule,
       EffectsModule.forFeature([ProfileEffects]),
       StoreModule.forFeature(PROFILE_STATE_NAME, ProfileReducer)
       

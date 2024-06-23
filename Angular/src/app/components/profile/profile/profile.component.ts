@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
   }
   
   addECar(){
-    this.store.dispatch(addEmptyCar());
+    //this.store.dispatch(addEmptyCar());
     this.showContent = true;
   }
 

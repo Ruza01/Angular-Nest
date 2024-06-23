@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { carAdapter, initialState } from "./car.state";
-import { addCarImagesSuccess, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
+import { addCar, addCarImagesSuccess, addCarSucces, addEmptyCar, addEmptyCarSuccess } from "./car.action";
 
 
 const _carReducer = createReducer(initialState,
@@ -22,7 +22,8 @@ const _carReducer = createReducer(initialState,
             ...state,
             newCarImageUrls: action.imageUrls
         }
-    })
+    }),
+
     
 )
 

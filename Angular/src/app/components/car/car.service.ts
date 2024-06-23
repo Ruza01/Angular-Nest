@@ -16,12 +16,11 @@ export class CarService {
 
     }
 
-    addCar(carDto: AddCarDto, carId: number){
-        return this.httpClient.patch(`${api}/car/addCar/${carId}`, carDto);
+    addCar(carDto: AddCarDto){
+        return this.httpClient.post(`${api}/car/addCar`, carDto);
     }
 
     addEmptyCar(){
-        console.log('asdasda');
         return this.httpClient.post(`${api}/car/addEmpty`, {headers: {'Content-Type':'application/json'}});
     }
 

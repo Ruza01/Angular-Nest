@@ -4,13 +4,14 @@ import { Car } from "./entities/car.entity";
 import { Repository } from "typeorm";
 import { UserService } from "../user/user.service";
 import { carDto } from "./DTOs/car.dto";
+import { carImages } from "./entities/carImages.entity";
 
 
 @Injectable()
 export class CarService {
 
     constructor(@InjectRepository(Car) private carRepository: Repository<Car>,
-    private userService: UserService ){
+    private userService: UserService, @InjectRepository(carImages) private carImagesRepository: Repository<carImages>){
     }
 
     async addEmptyCar(){
@@ -71,10 +72,19 @@ export class CarService {
             car.fiksnaCena = carDto.fiksnaCena;
             car.zamena = carDto.zamena;
             car.user = user;
+            
+            const savedCar = await this.carRepository.save(car);
 
-            //this.carRepository.update(car.id, car);
-            const asCar = await this.carRepository.save(car);
-            return asCar;
+            // Dodavanje slika u carImages tabelu
+            for (const imagePath of carDto.slike) {
+                const carImage = new carImages();
+                carImage.imagePath = imagePath;
+                carImage.cars = savedCar;
+                await this.carImagesRepository.save(carImage);
+              }
+            
+      
+            return savedCar;
 
         }catch(e){
             throw new BadRequestException(e.message);

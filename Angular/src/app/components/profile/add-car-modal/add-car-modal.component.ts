@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { Store } from '@ngrx/store';
-import { addCar, addCarImages, addEmptyCar, getCars } from '../../car/state/car.action';
-import { selectNewCarId, selectNewCarImages } from '../../car/state/car.selector';
+import { addCar, addCarImages, getCars } from '../../car/state/car.action';
 import { CarService } from '../../car/car.service';
 import { AppState } from 'src/app/store/app.state';
 import { AddCarDto } from 'src/app/Dto/add-car.dto';
 import { getUserId } from '../../user-auth/state/auth.selector';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-car-modal',
@@ -16,6 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-car-modal.component.css']
 })
 export class AddCarModalComponent implements OnInit{
+
+  @Output() formClosed = new EventEmitter();
 
   value1 = 'Stanje';
   value2 = 'Marka';
@@ -30,7 +32,8 @@ export class AddCarModalComponent implements OnInit{
   value11 = 'Fiksna cena';
   value12 = 'Zamena';
 
-  imageUrl: string[] = [];
+  images: string[] = []; // Niz za čuvanje putanja do slika
+  selectedImage: string | ArrayBuffer | null = null; // Podešavanje za odabranu sliku
 
   carForm : FormGroup = new FormGroup({
     stanje: new FormControl('',Validators.required),
@@ -53,7 +56,7 @@ export class AddCarModalComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.store.select(selectNewCarImages).subscribe(images => this.imageUrl = images);
+   
   }
 
 
@@ -65,22 +68,29 @@ export class AddCarModalComponent implements OnInit{
       
   }
 
-  addPhotos(event: Event){
-    const files = (<HTMLInputElement>event.target).files;
-    if(files){
-      this.store.dispatch(getCars());
-      const primitiveFileList: File[] = Array.from(files);
-      console.log(primitiveFileList);
-      let id: number = -1;
-      this.store.select(selectNewCarId).subscribe(value => id = value);
-      //this.carService.uploadImages(files, id).subscribe(res => console.log(res));
-      this.store.dispatch(addCarImages({ files: primitiveFileList, id }))
+  addPhotos(event: any) {
+    const files = event.target.files;
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.images.push(e.target.result);
+          const newImages = [...this.images, e.target.result];
+          this.store.dispatch(addCarImages({ images: newImages }));
+        };
+        reader.readAsDataURL(files[i]);
+      }
     }
   }
 
+  removePhoto(index: number) {
+    this.images.splice(index, 1);
+  }
+
   addCar() {
-    if (this.carForm.valid) {
+    if (this.carForm.valid ) {
       const carDto: AddCarDto = this.carForm.value;
+      carDto.slike = this.images;
 
       this.store.select(getUserId).subscribe(userID => {
         carDto.userId = userID;
@@ -90,6 +100,8 @@ export class AddCarModalComponent implements OnInit{
       this.snackBar.open('Uspešno ste postavili oglas!', 'Zatvori', {
         duration: 7000,
       });
+      this.formClosed.emit();
+      
     } else {
       this.snackBar.open('Morate popuniti sva polja i dodati slike!', 'Zatvori', {
         duration: 7000,

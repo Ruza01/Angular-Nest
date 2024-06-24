@@ -1,6 +1,7 @@
 
 
 export interface AddCarDto{
+    images: string[];
     stanje: string;
     marka: string;
     model: string;
@@ -14,4 +15,5 @@ export interface AddCarDto{
     fiksnaCena: string;
     zamena: string;
     userId: number;
+    slike: string[];
 }

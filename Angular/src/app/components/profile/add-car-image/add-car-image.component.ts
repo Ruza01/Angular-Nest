@@ -30,7 +30,7 @@ export class AddCarImageComponent {
       const primitiveFileList: File[] = Array.from(files);
       let id: number = -1;
       //this.store.select(selectNewPlantId).subscribe(value => id = value);
-      this.store.dispatch(addCarImages({ files: primitiveFileList, id}));
+      //this.store.dispatch(addCarImages({ files: primitiveFileList, id}));
     }
   }
 } 

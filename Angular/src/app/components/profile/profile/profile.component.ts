@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { addEmptyCar } from '../../car/state/car.action';
 import { CarService } from '../../car/car.service';
 import { AppState } from 'src/app/store/app.state';
 
@@ -21,9 +20,12 @@ export class ProfileComponent implements OnInit {
     
   }
   
-  addECar(){
-    //this.store.dispatch(addEmptyCar());
+  openForm() {
     this.showContent = true;
+  }
+
+  onFormClosed() {
+    this.showContent = false;
   }
 
 }

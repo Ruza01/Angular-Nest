@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty, isNotEmpty } from "class-validator";
 import { PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -42,6 +42,9 @@ export class carDto {
 
     @IsNotEmpty()
     userId: number;
+
+    @IsNotEmpty()
+    slike: string[]
 
 
 }

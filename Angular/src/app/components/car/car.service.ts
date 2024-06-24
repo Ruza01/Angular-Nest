@@ -32,14 +32,15 @@ export class CarService {
         return this.httpClient.get(`${api}/car/getImage/${id}`);
     }
 
-    uploadImages(files: File[], id: number){
-        let formData = new FormData();
-        if(files){
-            files.forEach(file => {
-                formData.append('file',file,file.name);
-            });
-        }
-        return this.httpClient.post(`${api}/car/uploadImage/${id}`, formData);
+    uploadImages(files: File[]){
+        // let formData = new FormData();
+        // if(files){
+        //     files.forEach(file => {
+        //         formData.append('file',file,file.name);
+        //     });
+        // }
+        // return this.httpClient.post(`${api}/car/uploadImage/${id}`, formData);
+        console.log("Uso u metodu na klijentu");
     }
 
     

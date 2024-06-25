@@ -1,23 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Car } from 'src/app/Models/car.model';
+import { selectAllCars, selectAllImages } from '../../car/state/car.selector';
+import { getCars } from '../../car/state/car.action';
 
 @Component({
   selector: 'app-car-card',
   templateUrl: './car-card.component.html',
   styleUrls: ['./car-card.component.css']
 })
-export class CarCardComponent {
+export class CarCardComponent implements OnInit{
 
   showAdditionalContent: boolean = false;
+  selectedCar: Car | null = null;
+  cars$: Observable<Car[]>;
+  images$: Observable<string[]>;
 
-  value1 = 'Naziv';
-  value2 = 'Cena';
-  value3 = 'Godiste';
+  constructor(private store: Store){
+    this.cars$ = this.store.select(selectAllCars);
+    this.images$ = this.store.select(selectAllImages);
+  }
 
-  toggleContent(){
+  toggleContent(car: Car){
+    this.selectedCar = car;
     this.showAdditionalContent = true;
   }
 
   closeAdditionalContent(){
+    this.selectedCar = null;
+    this.showAdditionalContent = false;
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(getCars());
+  }
+
+  onCloseViewMore(){
     this.showAdditionalContent = false;
   }
 

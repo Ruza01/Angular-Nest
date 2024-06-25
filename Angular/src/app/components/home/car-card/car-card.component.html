@@ -1,4 +1,4 @@
-<div class="divCarCard1">
+<div class="divCarCard1" *ngFor="let car of cars$ | async"  >
     <div class="divZaSliku">
         <img src="assets/noCarImage/no-image-available.webp" style="height: 181px; width: 284px; border-radius: 40px; margin-top: 3px;
         margin-left: 3px; margin-right: 3px;">
@@ -6,23 +6,23 @@
     <div class="divPodaci">
       <div class="DivNaziv">
         <label id="labelNaziv">Naziv</label>
-        <div>{{value1}}</div>
+        <div>{{car.marka}} {{car.model}}</div>
       </div>
       <div class="DivCena">
         <label id="labelCena">Cena</label>
-        <div>{{value2}}</div>
+        <div>{{car.cena}}€ </div>
       </div>
       <div class="DivGodiste">
         <label id="labelGodiste">Godiste</label>
-        <div>{{value3}}</div>
+        <div>{{car.godiste}}</div>
       </div>
       </div>
     <div class="divDugmici">
-      <button mat-button id="basicButton" (click)="toggleContent()">View More</button>
+      <button mat-button id="basicButton" (click)="toggleContent(car)">View More</button>
     </div>
     
-    <div *ngIf="showAdditionalContent" class="blur-background" (click)="closeAdditionalContent()"></div>
-    <div *ngIf="showAdditionalContent" class="divContent">
-      <app-view-more></app-view-more>
+    <div *ngIf="showAdditionalContent && selectedCar === car" class="blur-background" (click)="closeAdditionalContent()"></div>
+    <div *ngIf="showAdditionalContent && selectedCar === car" class="divContent">
+      <app-view-more [car]="car" (closeViewMore)="onCloseViewMore()"></app-view-more>
     </div>
 </div>

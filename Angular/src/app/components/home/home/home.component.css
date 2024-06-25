@@ -20,3 +20,9 @@
     margin-top: 40px;
     margin-left: 25px;
 }
+
+.divInfoCarCard {
+    display: flex;
+    flex-wrap: wrap; 
+}
+

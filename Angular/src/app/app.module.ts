@@ -20,6 +20,7 @@ import { appReducer } from './store/app.state';
 import { CarComponent } from './components/car/car.component';
 import { CarEffects } from './components/car/state/car.effects';
 import { ProfileEffects } from './components/profile/state/profile.effects';
+import { CarModule } from './components/car/car.module';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfileEffects } from './components/profile/state/profile.effects';
     MatFormFieldModule,
     FormsModule,
     HomeModule,
+    CarModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, 
       logOnly: !isDevMode(), 

@@ -89,11 +89,6 @@ export class CarController {
         }
     }
 
-    @Post('addEmpty')
-    async addEmptyCar(){
-        return this.carService.addEmptyCar();
-    }
-
     @Get('getAllCars')
     async getAllCars(){
         return this.carService.getAllCars();

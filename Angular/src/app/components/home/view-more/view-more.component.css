@@ -98,3 +98,14 @@
     margin-top: 20px;
     color: red;
 }
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }

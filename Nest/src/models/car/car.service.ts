@@ -14,26 +14,6 @@ export class CarService {
     private userService: UserService, @InjectRepository(carImages) private carImagesRepository: Repository<carImages>){
     }
 
-    async addEmptyCar(){
-        let _car = new Car();
-        _car.stanje = "";
-        _car.marka = "";
-        _car.model = "";
-        _car.godiste = 0;
-        _car.kilometraza = 0;
-        _car.karoserija = "";
-        _car.gorivo = "";
-        _car.kubikaza = 0;
-        _car.snagaMotora = 0;
-        _car.cena = 0;
-        _car.fiksnaCena = "";
-        _car.zamena = "";
-        _car.user = null;
-        
-        const car = this.carRepository.create(_car);
-        return this.carRepository.save(car);
-    }
-
     async getCarById(id: number){
         return Car.findOneBy({id});
     }
@@ -56,8 +36,7 @@ export class CarService {
             if(user == null){
                 throw new BadRequestException('user not found');
             }
-
-            //let car = await this.getCarById(id);
+            
             let car = new Car();
             car.stanje = carDto.stanje;
             car.marka = carDto.marka;

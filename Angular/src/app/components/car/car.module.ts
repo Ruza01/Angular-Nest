@@ -7,8 +7,8 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { EffectsModule } from "@ngrx/effects";
 import { CarEffects } from "./state/car.effects";
 import { StoreModule } from "@ngrx/store";
-import { CAR_STATE_NAME } from "./state/car.selector";
 import { CarReducer } from "./state/car.reducer";
+import { CAR_STATE_NAME } from "./state/car.selector";
 
 
 @NgModule({

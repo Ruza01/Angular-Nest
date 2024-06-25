@@ -1,40 +1,40 @@
-<div class="divStreliceNaziv">
-  <p class="nazivDiv">Vokswagen passat</p>
+<div *ngIf="car" class="divStreliceNaziv">
+  <p class="nazivDiv">{{car.marka}} {{car.model}}</p>
   <div class="streliceDiv"> 
   <button class="arrow-button"  (click)="stepBack1()"><</button>
   <button class="arrow-button" (click)="stepForward1()">></button>
 </div>
-  <div class="labelCena">4700€</div>
+  <div class="labelCena">{{car.cena}}€</div>
 </div>
 <div class="divSlikaInfo">
   <div class="divZaSliku1">
     <img src="../../../../assets/noCarImage/no-image-available.webp" id="slika1">
   </div>
-  <div class="divPodaci">
+  <div *ngIf="car" class="divPodaci">
     <h3 class="opsteInfo"> Opste informacije </h3>
     <div class="divGodiste" style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelGodiste">Godiste: </label> <span class="spanGodiste">2006</span>
+      <label class="labelGodiste">Godiste: </label> <span class="spanGodiste">{{car.godiste}}</span>
     </div>
     <div class="divStanje" style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelStanje">Stanje:</label>  <span class="spanStanje">Nov</span>
+      <label class="labelStanje">Stanje:</label>  <span class="spanStanje">{{car.stanje}}</span>
     </div>
     <div class="divMarka"  style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelMarka">Marka: </label> <span class="spanMarka">BMW</span>
+      <label class="labelMarka">Marka: </label> <span class="spanMarka">{{car.marka}}</span>
     </div>
     <div class="divModel" style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelModel">Model: </label> <span class="spanModel">X3</span>
+      <label class="labelModel">Model: </label> <span class="spanModel">{{car.model}}</span>
     </div>
     <div class="divKilometraza" style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelKilometraza">Kilometraza: </label> <span class="spanKilometraza">220789</span>
+      <label class="labelKilometraza">Kilometraza: </label> <span class="spanKilometraza">{{car.kilometraza}}</span>
     </div>
     <div class="divKaroserija"  style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelKaroserija">Karoserija: </label> <span class="spanKaroserija">limuzina</span>
+      <label class="labelKaroserija">Karoserija: </label> <span class="spanKaroserija">{{car.karoserija}}</span>
     </div>
     <div class="divGorivo"  style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelGorivo">Gorivo: </label> <span class="spanGorivo">Dizel</span>
+      <label class="labelGorivo">Gorivo: </label> <span class="spanGorivo">{{car.gorivo}}</span>
     </div>
     <div class="divKubikaza"  style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelKubikaza">Kubikaza: </label> <span class="spanKubikaza">1998</span>
+      <label class="labelKubikaza">Kubikaza: </label> <span class="spanKubikaza">{{car.kubikaza}}</span>
     </div>
   </div>
 </div>

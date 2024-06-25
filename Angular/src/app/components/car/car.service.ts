@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { AddCarDto } from "src/app/Dto/add-car.dto";
 import { Car } from "src/app/Models/car.model";
 
@@ -41,6 +42,10 @@ export class CarService {
         // }
         // return this.httpClient.post(`${api}/car/uploadImage/${id}`, formData);
         console.log("Uso u metodu na klijentu");
+    }
+
+    getCars(): Observable<Car[]>{
+        return this.httpClient.get<Car[]>(`${api}/car/getAllCars`);
     }
 
     

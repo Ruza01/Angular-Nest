@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { addCar, addCarImages, addCarSucces, getCars, getCarsSuccess } from "./car.action";
+import { addCar, addCarImages, addCarSucces, deleteCar, deleteCarSucces, getCars, getCarsSuccess } from "./car.action";
 import { catchError, exhaustMap, map, mergeMap, of } from "rxjs";
 import { Store } from "@ngrx/store";
 import { DomSanitizer } from "@angular/platform-browser";
@@ -55,6 +55,17 @@ export class CarEffects {
           )
         )
       );
+      
+      deleteCar$ = createEffect(() => 
+        this.actions$.pipe(
+          ofType(deleteCar),
+          mergeMap(action => 
+            this.carService.deleteCar(action.carId).pipe(
+              map(() => deleteCarSucces({ carId: action.carId }))
+            )
+          )
+        )
+      )
 
 
 

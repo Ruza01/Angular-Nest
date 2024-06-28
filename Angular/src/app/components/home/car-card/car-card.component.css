@@ -104,4 +104,14 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-top: 75px;
+}
+
+
+#deleteButton{
+    color: red;
+    background-color: transparent;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 45px;
 }

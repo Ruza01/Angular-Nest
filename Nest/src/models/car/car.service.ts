@@ -11,7 +11,8 @@ import { carImages } from "./entities/carImages.entity";
 export class CarService {
 
     constructor(@InjectRepository(Car) private carRepository: Repository<Car>,
-    private userService: UserService, @InjectRepository(carImages) private carImagesRepository: Repository<carImages>){
+    private userService: UserService, @InjectRepository(carImages) private carImagesRepository: Repository<carImages>, @InjectRepository(carImages)
+    private imgRepository: Repository<carImages>){
     }
 
     async getCarById(id: number){
@@ -32,10 +33,16 @@ export class CarService {
         
     }
 
-    async deleteCar(id: number){
-        return Car.delete(id);
-    }
-
+    async deleteCar(id: number) {
+          const car = await this.carRepository.findOne({ where: { id } });    
+          // Obriši slike povezane sa autom
+          await this.imgRepository.delete(id);
+    
+          // Obriši auto
+          const result = await this.carRepository.delete(id);
+          return result;
+      }
+ 
     async addCar(carDto: carDto){
         try{
             const user = await this.userService.getUserById(carDto.userId);  //user koji postavlja auto

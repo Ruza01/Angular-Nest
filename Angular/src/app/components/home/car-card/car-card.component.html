@@ -20,9 +20,11 @@
         </div>
         </div>
       <div class="divDugmici">
+        <button mat-icon-button id="deleteButton" (click)="deleteCar(car)">
+          <mat-icon>delete</mat-icon>
+        </button>
         <button mat-button id="basicButton" (click)="toggleContent(car)">View More</button>
       </div>
-      
       <div *ngIf="showAdditionalContent && selectedCar === car" class="blur-background" (click)="closeAdditionalContent()"></div>
       <div *ngIf="showAdditionalContent && selectedCar === car" class="divContent">
         <app-view-more [car]="car" (closeViewMore)="onCloseViewMore()"></app-view-more>

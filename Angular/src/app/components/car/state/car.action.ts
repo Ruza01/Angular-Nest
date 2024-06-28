@@ -9,3 +9,6 @@ export const addCarImages = createAction('Add Car Image', props<{ images: any[] 
 
 export const getCars = createAction('Get cars');
 export const getCarsSuccess = createAction('Get cars success', props<{ cars: Car[] }>() );
+
+export const deleteCar = createAction('Delete car', props< { carId: number } >() );
+export const deleteCarSucces = createAction('Delete car Success', props< { carId: number} >() );

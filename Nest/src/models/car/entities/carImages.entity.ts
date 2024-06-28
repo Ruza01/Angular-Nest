@@ -11,6 +11,6 @@ export class carImages extends BaseEntity{
     @Column()
     imagePath: string;
 
-    @ManyToOne(type => Car, car => car.images)
+    @ManyToOne(type => Car, car => car.images, { onDelete: 'CASCADE' })
     cars: Car;
 }

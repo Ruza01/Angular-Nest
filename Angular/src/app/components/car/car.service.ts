@@ -48,5 +48,9 @@ export class CarService {
         return this.httpClient.get<Car[]>(`${api}/car/getAllCars`);
     }
 
+    deleteCar(carId: number): Observable<void>{
+        return this.httpClient.delete<void>(`${api}/car/deleteCar/${carId}`);
+    }
+
     
 }

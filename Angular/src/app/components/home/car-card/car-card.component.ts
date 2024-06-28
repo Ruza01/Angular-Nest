@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Car } from 'src/app/Models/car.model';
 import { selectAllCars, selectAllImages } from '../../car/state/car.selector';
-import { getCars } from '../../car/state/car.action';
+import { deleteCar, getCars } from '../../car/state/car.action';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-car-card',
@@ -17,7 +18,7 @@ export class CarCardComponent implements OnInit{
   cars$: Observable<Car[]>;
   images$: Observable<string[]>;
 
-  constructor(private store: Store){
+  constructor(private store: Store, private snackBar: MatSnackBar){
     this.cars$ = this.store.select(selectAllCars);
     this.images$ = this.store.select(selectAllImages);
     
@@ -54,4 +55,11 @@ export class CarCardComponent implements OnInit{
     this.showAdditionalContent = false;
   }
 
+  deleteCar(car: Car){
+    this.store.dispatch(deleteCar( {carId: car.id} ));
+
+    this.snackBar.open('Uspešno ste obrisali oglas!', 'Zatvori', {
+      duration: 7000,
+    });
+  }
 }

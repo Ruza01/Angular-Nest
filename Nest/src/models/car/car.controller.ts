@@ -100,7 +100,7 @@ export class CarController {
     }
 
     @Delete('deleteCar/:id')
-    async deleteCar(@Body() carDto: carDto, @Param('id', ParseIntPipe) id: number ){
+    async deleteCar(@Param('id', ParseIntPipe) id: number ){
         return this.carService.deleteCar(id);
     }
 

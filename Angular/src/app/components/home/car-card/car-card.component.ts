@@ -20,11 +20,13 @@ export class CarCardComponent implements OnInit{
   constructor(private store: Store){
     this.cars$ = this.store.select(selectAllCars);
     this.images$ = this.store.select(selectAllImages);
+    
   }
 
   toggleContent(car: Car){
     this.selectedCar = car;
     this.showAdditionalContent = true;
+    
   }
 
   closeAdditionalContent(){
@@ -34,6 +36,18 @@ export class CarCardComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(getCars());
+
+    this.cars$.subscribe(cars => {
+      console.log("Automobili:",cars);
+      cars.forEach(car => {
+        console.log(`Slike za auto ${car.id}:`, car.images);
+      })
+    })
+
+    this.images$.subscribe(images => {
+      console.log("Slike", images);
+    })
+    
   }
 
   onCloseViewMore(){

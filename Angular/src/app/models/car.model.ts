@@ -14,5 +14,5 @@ export interface Car{
     cena: number;
     fiksnaCena: string;
     zamena: string;
-    slike: string[];
+    images: { id: number, imagePath: string}[];
 }

@@ -21,7 +21,7 @@ export class CarEffects {
             ofType(addCar),
             exhaustMap(action => this.carService.addCar(action.carDto).pipe(
                 map((car: any) => {
-                    const imageUrls: string[] = action.carDto.images;
+                    const imageUrls: any[] = action.carDto.images;
                     const carObj: Car = {
                         id: car.id,
                         stanje: car.stanje,
@@ -36,7 +36,7 @@ export class CarEffects {
                         cena: car.cena,
                         fiksnaCena: car.fiksnaCena,
                         zamena: car.zamena,
-                        slike: imageUrls
+                        images: imageUrls
                     }
                     return addCarSucces({ car: carObj })
                 }) 

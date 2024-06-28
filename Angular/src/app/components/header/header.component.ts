@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   
   logOut(){
     this.store.dispatch(loginSuccess({ user: null}));
+    this.router.navigate(['/login']);
   }
 
   goToTwitter(){

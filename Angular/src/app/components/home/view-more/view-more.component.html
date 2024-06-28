@@ -8,7 +8,7 @@
 </div>
 <div class="divSlikaInfo">
   <div class="divZaSliku1">
-    <img src="../../../../assets/noCarImage/no-image-available.webp" id="slika1">
+    <img *ngIf="car" [src]="car.images[currentImageIndex].imagePath" id="slika1">
   </div>
   <div *ngIf="car" class="divPodaci">
     <h3 class="opsteInfo"> Opste informacije </h3>
@@ -25,7 +25,7 @@
       <label class="labelModel">Model: </label> <span class="spanModel">{{car.model}}</span>
     </div>
     <div class="divKilometraza" style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelKilometraza">Kilometraza: </label> <span class="spanKilometraza">{{car.kilometraza}}</span>
+      <label class="labelKilometraza">Kilometraza: </label> <span class="spanKilometraza">{{car.kilometraza}}km</span>
     </div>
     <div class="divKaroserija"  style="margin-top: 10px; border-bottom: 1px solid orange;">
       <label class="labelKaroserija">Karoserija: </label> <span class="spanKaroserija">{{car.karoserija}}</span>
@@ -34,15 +34,15 @@
       <label class="labelGorivo">Gorivo: </label> <span class="spanGorivo">{{car.gorivo}}</span>
     </div>
     <div class="divKubikaza"  style="margin-top: 10px; border-bottom: 1px solid orange;">
-      <label class="labelKubikaza">Kubikaza: </label> <span class="spanKubikaza">{{car.kubikaza}}</span>
+      <label class="labelKubikaza">Kubikaza: </label> <span class="spanKubikaza">{{car.kubikaza}}cm3</span>
     </div>
   </div>
 </div>
 <div class="divRegistracijaKasko">
   <div class="divReg">
-    Cena registracije ovog vozila: od <span class="zelenaBoja"> 100.000 </span> do <span class="zelenaBoja"> 120.000 </span> 
+    Cena registracije ovog vozila: od <span class="zelenaBoja"> {{registration}} </span> do <span class="zelenaBoja"> {{registration + 20000}} </span> 
   </div>
   <div class="divKasko">
-    Cena KASKO osiguranja za ovo vozilo: od <span class="zelenaBoja"> 40.000 </span> do <span class="zelenaBoja"> 70.000 </span> 
+    Cena KASKO osiguranja za ovo vozilo: od <span class="zelenaBoja"> {{kasko}} </span> do <span class="zelenaBoja"> {{kasko + 70000}} </span> 
   </div>
 </div>

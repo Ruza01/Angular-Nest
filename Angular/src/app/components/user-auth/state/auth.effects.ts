@@ -44,7 +44,7 @@ export class AuthEffects{
             ofType(...[loginSuccess, signupSuccess]),
             tap(action => {
                 this.store.dispatch(setErrorMessage({ errorMsg:"" }));
-                this.router.navigate(['/']);
+                this.router.navigate(['/profile']);
             })
         )
     }, {dispatch: false});

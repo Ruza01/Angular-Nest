@@ -3,10 +3,11 @@
     height: 205px;
     width: 585px;
     border-radius: 40px;
-    margin-left: 20px;
+    margin-left: 10px;
     display: flex;
     background-color: rgba(31, 31, 31, 0.9);
     border: 5px solid black;
+    margin-top: 10px;
 }
 
 .divZaSliku{
@@ -97,4 +98,10 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+.divGlavni{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }

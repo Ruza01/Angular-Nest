@@ -20,7 +20,7 @@ const _carReducer = createReducer(initialState,
       on(getCarsSuccess, (state, { cars }) => ({
       ...state,
       cars,
-      images: cars.flatMap(car => car.slike) 
+      images: cars.flatMap(car => car.images) 
   }))
 
     

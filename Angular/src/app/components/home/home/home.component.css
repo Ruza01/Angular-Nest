@@ -3,12 +3,15 @@
 .container111{
     display: flex;
     background-image: url('../../../../assets/background/pngtree-hd-brick-wall-background-picture-image_206286.jpg');
-    height: 91%;
+    background-size: cover; 
+    background-attachment: fixed; 
+    min-height: 100vh; 
+    width: 100%;
 
 }
 
 .divZaCarCard{
-    margin-top: 20px;
+    margin-top: 3px;
 }
 
 .filterDiv{
@@ -17,12 +20,14 @@
 }
 
 .infoDiv{
-    margin-top: 40px;
+    margin-top: 25px;
     margin-left: 25px;
+    height: 94px;
 }
 
 .divInfoCarCard {
     display: flex;
-    flex-wrap: wrap; 
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 

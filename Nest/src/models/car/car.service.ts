@@ -19,11 +19,17 @@ export class CarService {
     }
 
     async getAllCars(){
-        return Car.find({ relations: ['user'], select: {
+        return Car.find({ relations: ['user', 'images'], select: {
             user:{
                 username: true
+            },
+            images: {
+                id: true,
+                imagePath: true,
+                
             }
         }});
+        
     }
 
     async deleteCar(id: number){
@@ -55,7 +61,7 @@ export class CarService {
             const savedCar = await this.carRepository.save(car);
 
             // Dodavanje slika u carImages tabelu
-            for (const imagePath of carDto.slike) {
+            for (const imagePath of carDto.images) {
                 const carImage = new carImages();
                 carImage.imagePath = imagePath;
                 carImage.cars = savedCar;

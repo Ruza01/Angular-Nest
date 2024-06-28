@@ -44,7 +44,7 @@ export class carDto {
     userId: number;
 
     @IsNotEmpty()
-    slike: string[]
+    images: string[]
 
 
 }

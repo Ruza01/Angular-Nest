@@ -90,7 +90,7 @@ export class AddCarModalComponent implements OnInit{
   addCar() {
     if (this.carForm.valid ) {
       const carDto: AddCarDto = this.carForm.value;
-      carDto.slike = this.images;
+      carDto.images = this.images;
 
       this.store.select(getUserId).subscribe(userID => {
         carDto.userId = userID;

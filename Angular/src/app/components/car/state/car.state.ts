@@ -5,7 +5,7 @@ import { Car } from "src/app/Models/car.model";
 
 export interface CarState {
     cars: any[];
-    images: string[]
+    images: any
 }
 
 export const initialState: CarState = {

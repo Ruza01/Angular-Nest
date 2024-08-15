@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AddCarModalComponent implements OnInit{
 
-  @Output() formClosed = new EventEmitter();
+  @Output() formClosed = new EventEmitter(); // salje u roditeljku komponentu
 
   value1 = 'Stanje';
   value2 = 'Marka';
@@ -32,8 +32,8 @@ export class AddCarModalComponent implements OnInit{
   value11 = 'Fiksna cena';
   value12 = 'Zamena';
 
-  images: string[] = []; // Niz za čuvanje putanja do slika
-  selectedImage: string | ArrayBuffer | null = null; // Podešavanje za odabranu sliku
+  images: string[] = []; 
+  selectedImage: string | ArrayBuffer | null = null; 
 
   carForm : FormGroup = new FormGroup({
     stanje: new FormControl('',Validators.required),
@@ -74,8 +74,8 @@ export class AddCarModalComponent implements OnInit{
       for (let i = 0; i < files.length; i++) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.images.push(e.target.result);
-          const newImages = [...this.images, e.target.result];
+          this.images.push(e.target.result);  //dodaje rezultat citanja
+          const newImages = [...this.images, e.target.result];//kreira novi niz sa dodatim slikama
           this.store.dispatch(addCarImages({ images: newImages }));
         };
         reader.readAsDataURL(files[i]);

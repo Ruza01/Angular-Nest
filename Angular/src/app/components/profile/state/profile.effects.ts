@@ -16,7 +16,7 @@ export class ProfileEffects {
     profileImage$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(getProfileImagee),
-            exhaustMap(action => this.profileService.getProfileImage(action.id)
+            exhaustMap(action => this.profileService.getProfileImage(action.id) //ključna karakteristika exhaustMap operatora je da ignoriše sve nove dolazne vrednosti dok se trenutni Observable (onaj koji je prethodno emitovan) ne završi. To znači da ako stigne nova akcija dok se prethodna akcija još obrađuje, exhaustMap će ignorisati tu novu akciju.
                 .pipe(
                     map( blob => {
                         let objectUrl = URL.createObjectURL(blob);  //pravimo objekat od tog blob-a (koji predstavlja sliku u binarnom formatu dobijenog od servera)

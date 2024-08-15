@@ -21,10 +21,6 @@ export class CarService {
         return this.httpClient.post(`${api}/car/addCar`, carDto);
     }
 
-    addEmptyCar(){
-        return this.httpClient.post(`${api}/car/addEmpty`, {headers: {'Content-Type':'application/json'}});
-    }
-
     getAllCars(){
         return this.httpClient.get<Car[]>(`${api}/car/getAllCars`);
     }
@@ -33,23 +29,16 @@ export class CarService {
         return this.httpClient.get(`${api}/car/getImage/${id}`);
     }
 
-    uploadImages(files: File[]){
-        // let formData = new FormData();
-        // if(files){
-        //     files.forEach(file => {
-        //         formData.append('file',file,file.name);
-        //     });
-        // }
-        // return this.httpClient.post(`${api}/car/uploadImage/${id}`, formData);
-        console.log("Uso u metodu na klijentu");
-    }
-
     getCars(): Observable<Car[]>{
         return this.httpClient.get<Car[]>(`${api}/car/getAllCars`);
     }
 
     deleteCar(carId: number): Observable<void>{
         return this.httpClient.delete<void>(`${api}/car/deleteCar/${carId}`);
+    }
+
+    getCarsByStanje(stanje: string){
+        return this.httpClient.get<Car[]>(`${api}/car/getCarsByStanje/${stanje}`);
     }
 
     

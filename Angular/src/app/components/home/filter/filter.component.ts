@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { getCarsByStanje } from '../../car/state/car.action';
+import { Observable } from 'rxjs';
+import { Car } from 'src/app/Models/car.model';
+import { selectAllCars, selectAllImages } from '../../car/state/car.selector';
 
 @Component({
   selector: 'app-filter',
@@ -9,6 +14,22 @@ export class FilterComponent {
 
   isButtonClicked: boolean = false;
   clickedButtonIndex: number = -1;
+  inputValue1: string = "";
+  inputValue2: string = "";
+  inputValue3: string = "";
+  inputValue4: string = "";
+  inputValue5: string = "";
+  inputValue6: string = "";
+  inputValue7: string = "";
+  inputValue8: string = "";
+  inputValue9: string = "";
+  cars$: Observable<Car[]>;
+  images$: Observable<string[]>;
+
+  constructor(private store: Store){
+    this.cars$ = this.store.select(selectAllCars);
+    this.images$ = this.store.select(selectAllImages);
+  }
 
   performAction(index: number){
     this.clickedButtonIndex = index;
@@ -32,7 +53,7 @@ export class FilterComponent {
         this.performAction6();
       break;
       case 7:
-        this.performAction7();
+        this.performAction7(); 
       break;
       case 8:
         this.performAction8();
@@ -45,48 +66,58 @@ export class FilterComponent {
   }
 
   performAction1() {
-    // Implementirajte željenu akciju koja će se desiti kada korisnik klikne na dugme "Done"
-    // Na primer: pozovite neku funkciju ili izvršite neki kod ovde
     this.isButtonClicked = true; 
+    console.log('Uneta vrednost u input-u je:', this.inputValue1);
+    this.store.dispatch(getCarsByStanje( {stanje: this.inputValue1} ));
+    this.cars$.subscribe(cars => {
+      console.log("Automobili:",cars);
+      cars.forEach(car => {
+        console.log(`Slike za auto ${car.id}:`, car.images);
+      })
+    })
+
+    this.images$.subscribe(images => {
+      console.log("Slike", images);
+    })
   }
 
   performAction2() {
-
     this.isButtonClicked = true; 
+    console.log('Uneta vrednost u input-u je:', this.inputValue2);
   }
 
   performAction3() {
-
     this.isButtonClicked = true; 
+    console.log('Uneta vrednost u input-u je:', this.inputValue3);
   }
 
   performAction4() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue4); 
   }
 
   performAction5() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue5); 
   }
 
   performAction6() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue6); 
   }
 
   performAction7() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue7); 
   }
 
   performAction8() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue8); 
   }
 
   performAction9() {
-
-    this.isButtonClicked = true; 
+    this.isButtonClicked = true;
+    console.log('Uneta vrednost u input-u je:', this.inputValue9); 
   }
 }

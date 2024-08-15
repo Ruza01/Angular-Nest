@@ -27,7 +27,7 @@
       </div>
       <div *ngIf="showAdditionalContent && selectedCar === car" class="blur-background" (click)="closeAdditionalContent()"></div>
       <div *ngIf="showAdditionalContent && selectedCar === car" class="divContent">
-        <app-view-more [car]="car" (closeViewMore)="onCloseViewMore()"></app-view-more>
+        <app-view-more [car]="car" (closeViewMore)="onCloseViewMore()"></app-view-more> <!--[car] je input element.Roditeljska komponenta (carCard) omogucava detetu (VieWMore) komponenti da koristi iste podatke,Zato u viewMore stavljamo @Input-->
       </div>
   </div>
 </div>

@@ -21,13 +21,12 @@ export class UserController {
     }
 
     @Post('uploadImage/:id')
-    @UseInterceptors(FileInterceptor('file', { //Ove postavke omogućavaju kontrolu nad uploadovanim datotekama, uključujući gde će biti smeštene, kako će se nazivati i koje vrste datoteka će biti prihvaćene.
+    @UseInterceptors(FileInterceptor('file', { 
         storage: diskStorage({
             destination(req, file, callback) {
                 const start = req.url.indexOf("uploadImage/");
                 const userId = req.url.substring(start+12);
 
-                //Kreira folder
                 const uploadPath = `./uploads/carImages/${userId}`;
                 if(!existsSync(uploadPath))
                     mkdirSync(uploadPath, {recursive:true});
@@ -49,7 +48,7 @@ export class UserController {
             callback(null, true);
         },
     }))
-    async uploadImage(@UploadedFile() file:Express.Multer.File, @Param('id', ParseIntPipe) id:number, @Res() res) { //prvi parametar funkcije je slika koja se uploaduje
+    async uploadImage(@UploadedFile() file:Express.Multer.File, @Param('id', ParseIntPipe) id:number, @Res() res) { 
         if(!file){
             throw new BadRequestException("File is not an image");
         }
@@ -65,30 +64,19 @@ export class UserController {
     }
 
     @Get('profile-image/:id')
-    async getProfileImage(@Param('id', ParseIntPipe) id:number, @Res() res) {  //ocekuje parametar id iz rute koji ce biti parsiran kao broj, res je odgovor koji ce se poslati korisniku
+    async getProfileImage(@Param('id', ParseIntPipe) id:number, @Res() res) {  
         
         const user = await this.userService.getUserById(id);
         let imagePath;
         if(user.profileImagePath != null){
-            imagePath = `${process.cwd()}/uploads/carImages/${id}/${user.profileImagePath}`; //cwd trenutni radni direktorijum
+            imagePath = `${process.cwd()}/uploads/carImages/${id}/${user.profileImagePath}`; 
         }
         else{
             imagePath = `${process.cwd()}/uploads/carImages`;
         }
         
-        return of(res.sendFile(imagePath)); //of pravi observable koji emituje taj odgovor, u (...) salje sliku korisniku kao odg na zahtev
-
+        return of(res.sendFile(imagePath)); 
     }
-
-    /*@Get('profile-data/:id')
-    async getProfileData(@Param('id', ParseIntPipe) id:number) {
-        const user = await this.userService.getProfileData(id);
-
-        if(!user)
-            throw new BadRequestException("User not found");
-        return user;
-    }*/
-
     
 }
 

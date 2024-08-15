@@ -17,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { appReducer } from './store/app.state';
-import { CarComponent } from './components/car/car.component';
 import { CarEffects } from './components/car/state/car.effects';
 import { ProfileEffects } from './components/profile/state/profile.effects';
 import { CarModule } from './components/car/car.module';

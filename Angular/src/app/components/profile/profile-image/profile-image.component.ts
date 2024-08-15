@@ -22,19 +22,19 @@ export class ProfileImageComponent implements OnInit {
 
   constructor(private profileService: ProfileService, private store: Store<AppState>){
     this.store.select(getUserId).subscribe(id => this.id = id);   //prati ako dodje do promene neke i odmah se izvrsi ako bude promene
-    this.store.dispatch(getProfileImagee({ id: this.id }));       //odmah nakon 24 linije se izvrsi i 25
+    this.store.dispatch(getProfileImagee({ id: this.id }));       
   }
 
   ngOnInit(): void {
-    this.imageUrl = this.store.select(getProfileImage); //getProfileImage je func (selector) koji vraca vrednost slike
+    this.imageUrl = this.store.select(getProfileImage); 
     this.user = this.store.select(getUser);
   }
 
   uploadImage(event: Event){
-    const inputFile = <HTMLInputElement>(event.target); //ev.tar sadrzi referencu na el koji izaziva dogadjaj
-    if(inputFile.files != null){  //ako je korisnik izabrao datoteku 
+    const inputFile = <HTMLInputElement>(event.target); 
+    if(inputFile.files != null){   
       let file = inputFile?.files[0];
-      this.store.dispatch(uploadProfileImage({ id: this.id, file })); //sa dispatch pozivamo tu akciju 
+      this.store.dispatch(uploadProfileImage({ id: this.id, file }));  
     }
   }
 

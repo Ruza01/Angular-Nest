@@ -15,10 +15,8 @@ export class ViewMoreComponent implements OnInit {
   cars$: Observable<Car[]>;
   kW: number = 200; //RSD
 
-
   @Input() car: Car | undefined;
-  @Input() showAdditionalContent = false;
-  @Output() closeViewMore: EventEmitter<void> = new EventEmitter<void>();
+  @Output() closeViewMore: EventEmitter<void> = new EventEmitter<void>(); //output element.Salje se roditeljskoj komponenti, vidi u carCardComponent.html
   currentImageIndex: number = 0;
   registration: number = 0;
   kasko: number = 0;
@@ -44,10 +42,6 @@ export class ViewMoreComponent implements OnInit {
       this.registration = this.calculateRegistration(this.car);
       this.kasko = this.calculateKasko(this.car);
     }
-  }
-
-  closeForm(){
-    this.closeViewMore.emit();
   }
 
   calculateRegistration(car: Car){

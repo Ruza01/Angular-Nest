@@ -4,7 +4,6 @@ import { CarState } from "./car.state"
 
 export const CAR_STATE_NAME = 'car';
 
-
 export const selectCarState = createFeatureSelector<CarState>(CAR_STATE_NAME);
 
 export const selectCarImages = createSelector(
@@ -21,3 +20,4 @@ export const selectAllImages = createSelector(
   selectCarState,
   (state: CarState) => state.images
 )
+

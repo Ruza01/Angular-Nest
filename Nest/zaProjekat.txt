@@ -1,2 +1,0 @@
-Pogledaj userController i userService za auth
-Dodaj u authService i jwtStrategy kad radis za profil

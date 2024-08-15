@@ -35,17 +35,17 @@ export class CarService {
 
     async deleteCar(id: number) {
           const car = await this.carRepository.findOne({ where: { id } });    
-          // Obriši slike povezane sa autom
+          
           await this.imgRepository.delete(id);
     
-          // Obriši auto
+          
           const result = await this.carRepository.delete(id);
           return result;
       }
  
     async addCar(carDto: carDto){
         try{
-            const user = await this.userService.getUserById(carDto.userId);  //user koji postavlja auto
+            const user = await this.userService.getUserById(carDto.userId); 
             if(user == null){
                 throw new BadRequestException('user not found');
             }
@@ -67,7 +67,7 @@ export class CarService {
             
             const savedCar = await this.carRepository.save(car);
 
-            // Dodavanje slika u carImages tabelu
+        
             for (const imagePath of carDto.images) {
                 const carImage = new carImages();
                 carImage.imagePath = imagePath;
@@ -81,6 +81,22 @@ export class CarService {
         }catch(e){
             throw new BadRequestException(e.message);
         }
+    }
+
+    async getCarsByStanje(stanjee: string){
+        return Car.find({ relations: ['user', 'images'], 
+            select: {
+            user:{
+                username: true
+            },
+            images: {
+                id: true,
+                imagePath: true,
+                
+            }
+            }, where: stanjee? {stanje: stanjee}: undefined
+
+        });
     }
 
     

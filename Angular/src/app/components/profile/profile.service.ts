@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AddCarDto } from "src/app/Dto/add-car.dto";
+import { User } from "src/app/Models/user.model";
 
 const api = "http://localhost:3000";
 
@@ -39,5 +40,11 @@ export class ProfileService {
         const requestOptions: Object = { responseType: 'blob' };
         return this.httpClient.post<any>(`${api}/user/uploadImage/${id}`, formData, requestOptions);
     }
+
+    updateUser(userId: number, field: string, value: string){
+        const body = { field, value};
+        return this.httpClient.put<User>(`${api}/user/update/${userId}`, body);
+    }
+ 
 
 }

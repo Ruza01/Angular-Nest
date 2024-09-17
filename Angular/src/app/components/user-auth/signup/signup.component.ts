@@ -51,6 +51,7 @@ export class SignupComponent {
       this.store.dispatch(signupStart({signupDto}))
     }else{
       this.validateAllFormsFields(this.signUpForm);
+      alert("Form is incorrect");
     }
   }
   

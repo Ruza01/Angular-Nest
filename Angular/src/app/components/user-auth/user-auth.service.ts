@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { User } from 'src/app/Models/user.model';
 import { signupDto } from 'src/app/Dto/signup.dto';
 import { responseToken } from 'src/app/Models/response-token.model';
+import { Observable } from 'rxjs';
 
 const api = "http://localhost:3000/"
 
@@ -11,6 +12,7 @@ const api = "http://localhost:3000/"
 })
 
 export class UserAuthService {
+  currentUser: any;
 
   constructor(private http:HttpClient){
   }
@@ -35,5 +37,11 @@ export class UserAuthService {
   signupUser(signupDto: signupDto){
     return this.http.post<User>(`${api}user/register`, signupDto);
   }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${api}/user`);
+  }
+
+  
 }
 

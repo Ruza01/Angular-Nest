@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { initialState } from "./profile.state";
-import { getProfileImageSucces } from "./profile.action";
+import { getProfileImageSucces, updateUserSuccess } from "./profile.action";
+import { state } from "@angular/animations";
 
 
 
@@ -11,6 +12,10 @@ const _profileReducer = createReducer(initialState,
             imageUrl: action.url
         }
     }),
+    on(updateUserSuccess, (state, { updatedUser }) => ({
+        ...state,
+        user: updatedUser
+      }))
 )
 
 export function ProfileReducer(state: any, action: any){

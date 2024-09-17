@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, HttpStatus, Param, ParseIntPipe, Post, Res, UploadedFile, UseInterceptors, ValidationPipe } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Get, HttpStatus, Param, ParseIntPipe, Post, Put, Res, UploadedFile, UseInterceptors, ValidationPipe } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { UserRegisterRequestDto } from "./DTOs/user-register.req.dto";
 import { SETTINGS } from "src/app.utils";
@@ -7,6 +7,8 @@ import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { existsSync, mkdirSync, readdir, unlink } from "fs";
 import { of } from "rxjs";
+import { UpdateFieldDto } from "./DTOs/dataField.dto";
+
 
 
 @Controller('user')
@@ -18,7 +20,7 @@ export class UserController {
     @Post('/register')
     async doUserRegistration( @Body(SETTINGS.VALIDATION_PIPE) userRegister: UserRegisterRequestDto ): Promise<User> {
         return await this.userService.doUserRegistration(userRegister);
-    }
+    }m
 
     @Post('uploadImage/:id')
     @UseInterceptors(FileInterceptor('file', { 
@@ -77,7 +79,15 @@ export class UserController {
         
         return of(res.sendFile(imagePath)); 
     }
-    
+
+    @Put('update/:id')
+    updateUserField(@Param('id', ParseIntPipe) id: number, @Body() updateData: UpdateFieldDto) {
+      console.log('Received ID:', id);
+      console.log('Received Body:', updateData);
+      console.log('Received Body:', updateData.field);
+      console.log('Received Body:', updateData.value);
+      return this.userService.updateUserField(id, updateData.field, updateData.value);
+    }
 }
 
 function deleteFiles(path:string){

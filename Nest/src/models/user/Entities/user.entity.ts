@@ -5,7 +5,6 @@ import { BaseEntity, BeforeInsert, Column, CreateDateColumn, Entity, OneToMany, 
 @Entity({ name: 'users' })
 export class User extends BaseEntity {
     
-    //Podaci pri registraciji
     @PrimaryGeneratedColumn()
     id: number;
 

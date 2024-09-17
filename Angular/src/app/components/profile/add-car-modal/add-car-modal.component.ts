@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AddCarModalComponent implements OnInit{
 
-  @Output() formClosed = new EventEmitter(); // salje u roditeljku komponentu
+  @Output() formClosed = new EventEmitter(); 
 
   value1 = 'Stanje';
   value2 = 'Marka';
@@ -75,7 +75,7 @@ export class AddCarModalComponent implements OnInit{
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.images.push(e.target.result);  //dodaje rezultat citanja
-          const newImages = [...this.images, e.target.result];//kreira novi niz sa dodatim slikama
+          const newImages = [...this.images, e.target.result];//kreira novi niz koji sadrzi slike iz this.images + nova slika
           this.store.dispatch(addCarImages({ images: newImages }));
         };
         reader.readAsDataURL(files[i]);

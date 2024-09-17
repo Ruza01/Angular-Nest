@@ -67,18 +67,8 @@ export class FilterComponent {
 
   performAction1() {
     this.isButtonClicked = true; 
-    console.log('Uneta vrednost u input-u je:', this.inputValue1);
     this.store.dispatch(getCarsByStanje( {stanje: this.inputValue1} ));
-    this.cars$.subscribe(cars => {
-      console.log("Automobili:",cars);
-      cars.forEach(car => {
-        console.log(`Slike za auto ${car.id}:`, car.images);
-      })
-    })
-
-    this.images$.subscribe(images => {
-      console.log("Slike", images);
-    })
+     
   }
 
   performAction2() {

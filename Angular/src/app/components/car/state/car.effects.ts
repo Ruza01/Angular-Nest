@@ -20,7 +20,7 @@ export class CarEffects {
         return this.actions$.pipe(
             ofType(addCar),
             exhaustMap(action => this.carService.addCar(action.carDto).pipe(
-                map((car: any) => { //kada se doda auto u bazu, rezultat se mapira na novu akciju
+                map((car: any) => { 
                     const imageUrls: any[] = action.carDto.images;
                     const carObj: Car = {
                         id: car.id,
@@ -38,7 +38,7 @@ export class CarEffects {
                         zamena: car.zamena,
                         images: imageUrls
                     }
-                    return addCarSucces({ car: carObj })  //vraca novu akciju koju uhvati reducer
+                    return addCarSucces({ car: carObj })  
                 }) 
             ))
         )
@@ -48,7 +48,7 @@ export class CarEffects {
         this.actions$.pipe(
           ofType(getCars),
           mergeMap(() => this.carService.getCars().pipe(   //operator koji obezbedjuje da se svaka nova akcija getCars pokrene, cak i ako je prethodni getCars API poziv jos u toku
-              map((cars: Car[]) => getCarsSuccess({ cars })), //ako je rezultat apija uspesan, lista automobila se mapira na akciju getCarsSuccess
+              map((cars: Car[]) => getCarsSuccess({ cars })),
               catchError(() => of({ type: 'Get cars failed' })) 
             )
           )

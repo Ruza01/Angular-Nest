@@ -46,8 +46,6 @@ export class LoginComponent implements OnInit {
 
       this.store.dispatch(setLoadingSpinner({ status:true }));
       this.store.dispatch(loginStart({email, password}));
-
-      //this.router.navigate(['/home'])
       
     }else{
       this.validateAllFormsFields(this.loginForm)

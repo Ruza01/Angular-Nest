@@ -41,13 +41,13 @@ export class AuthEffects{
 
     loginRedirect$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(...[loginSuccess, signupSuccess]),//... za prosledjivanje vise akcija
-            tap(action => { //tap sluzi, kad ne menjamo tok podataka
+            ofType(...[loginSuccess, signupSuccess]),
+            tap(action => { 
                 this.store.dispatch(setErrorMessage({ errorMsg:"" }));
                 this.router.navigate(['/profile']);
             })
         )
-    }, {dispatch: false});  //efekat ne dispecuje nijednu akciju, vec se samo vrsi preusmeravanje korisnika
+    }, {dispatch: false});  
 
     signup$ = createEffect(() => {
         return this.actions$.pipe(

@@ -16,7 +16,7 @@ export class ViewMoreComponent implements OnInit {
   kW: number = 200; //RSD
 
   @Input() car: Car | undefined;
-  @Output() closeViewMore: EventEmitter<void> = new EventEmitter<void>(); //output element.Salje se roditeljskoj komponenti, vidi u carCardComponent.html
+  @Output() closeViewMore: EventEmitter<void> = new EventEmitter<void>(); 
   currentImageIndex: number = 0;
   registration: number = 0;
   kasko: number = 0;

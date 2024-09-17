@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { ProfileService } from "../profile.service";
-import { getProfileImagee, getProfileImageSucces, uploadProfileImage } from "./profile.action";
-import { exhaustMap, map, mergeMap } from "rxjs";
+import { getProfileImagee, getProfileImageSucces, updateUser, updateUserSuccess, uploadProfileImage } from "./profile.action";
+import { exhaustMap, map, mergeMap, tap } from "rxjs";
 import { DomSanitizer } from "@angular/platform-browser";
 
 
@@ -16,11 +16,11 @@ export class ProfileEffects {
     profileImage$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(getProfileImagee),
-            exhaustMap(action => this.profileService.getProfileImage(action.id) //ključna karakteristika exhaustMap operatora je da ignoriše sve nove dolazne vrednosti dok se trenutni Observable (onaj koji je prethodno emitovan) ne završi. To znači da ako stigne nova akcija dok se prethodna akcija još obrađuje, exhaustMap će ignorisati tu novu akciju.
+            exhaustMap(action => this.profileService.getProfileImage(action.id) 
                 .pipe(
                     map( blob => {
-                        let objectUrl = URL.createObjectURL(blob);  //pravimo objekat od tog blob-a (koji predstavlja sliku u binarnom formatu dobijenog od servera)
-                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl); //objekat prolazi kroz domSanitizer servis, tacnije kroz njegocu metodu by.. (radi sigurnostii bezbednosti i manje problema i gresaka)
+                        let objectUrl = URL.createObjectURL(blob); 
+                        let url = this.sanitizer.bypassSecurityTrustUrl(objectUrl); 
                         return getProfileImageSucces({url})
                     })
                 ))
@@ -40,4 +40,18 @@ export class ProfileEffects {
             ))
         )
     })
+
+    updateUser$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(updateUser),
+            exhaustMap(action => this.profileService.updateUser(action.userId, action.field, action.value)
+            .pipe(
+                // tap( updateUser => {
+                //     console.log("Updated user recived from the server", updateUser);
+                // }),
+                map(updatedUser => updateUserSuccess({updatedUser}))
+            ))
+        )
+    })
+        
 }

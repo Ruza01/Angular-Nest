@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.showLoading = this.store.select(getLoading); //pretplacujemo se na promene odredjenog dela stanja.Pristupamo trenutnoj vrdnosti dela stanje, ali ne menjamo stanje
+    this.showLoading = this.store.select(getLoading); 
     this.errorMsg = this.store.select(getErrorMsg);
   }
 

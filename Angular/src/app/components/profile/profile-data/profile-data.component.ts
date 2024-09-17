@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/Models/user.model';
 import { getUser } from '../../user-auth/state/auth.selector';
 import { AppState } from 'src/app/store/app.state';
+import { updateUser } from '../state/profile.action';
 
 @Component({
   selector: 'app-profile-data',
@@ -20,12 +21,18 @@ export class ProfileDataComponent implements OnInit {
   value3 = 'Username';
   value4 = 'Email';
   user$!: Observable<User | null>;
+  originalUser: User | undefined;
 
   constructor(private store: Store<AppState>){
   }
 
   ngOnInit(): void {
     this.user$ = this.store.select(getUser);
+  }
+
+  updateField(field: string, value: string, userId: number){
+    this.store.dispatch(updateUser({ userId, field, value }))
+  
   }
 
 }
